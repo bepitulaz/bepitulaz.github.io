@@ -180,6 +180,4 @@ Now you can open your DNS manager and point the A record to your host IP and mak
 
 Login to your WordPress dashboard then goes to Settings > General. Replace the http with https.
 
-![wordpress](wordpress.png)
-
 Voila, now your WordPress site has ben secured and Google will love it.
