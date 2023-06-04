@@ -1,9 +1,12 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 
 import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://bepitulaz.github.io',
-  integrations: [mdx()]
+  site: "https://bepitulaz.github.io",
+  integrations: [mdx()],
+  experimental: {
+    assets: true,
+  },
 });

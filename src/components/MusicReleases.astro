@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+
+const musicCollection = await getCollection("music", ({ id }) => id === "releases");
+const releases = musicCollection[0].data.records;
+
+// take the last 4 releases and reverse the order so the latest release is first
+const latestReleases = releases.slice(-4).reverse();
+---
+
+<div class="row py-5">
+  {
+    latestReleases.map((release) => (
+      <article class="release col-sm-6 col-lg-3">
+        <img src={release.artwork} alt={release.title} class="img-fluid" />
+        <h3 class="mt-3"><a href={release.link} target="_blank" rel="noopener">{release.title}</a></h3>
+        <p>{release.year}</p>
+      </article>
+    ))
+  }
+</div>
+
+<script>
+  // Make the whole article.release clickable. The link is coming from article > h3 > a.
+  const releases = document.querySelectorAll("article.release");
+  releases.forEach((release) => {
+    release.addEventListener("click", () => {
+      const link = release.querySelector("h3 > a").href;
+      window.open(link, "_blank");
+    });
+  });
+</script>
+
+<style>
+  article.release {
+    cursor: pointer;
+  }
+
+  article.release a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  article.release a:hover {
+    color: #af2424;
+  }
+</style>
