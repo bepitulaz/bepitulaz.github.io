@@ -1,0 +1,66 @@
+---
+import { getCollection } from "astro:content";
+
+const articles = await getCollection("blog", ({ id }) => {
+  return id.startsWith('en/');
+});
+
+// Sort array of articles descending by date (newest first) in immutable way
+const sortedArticles = [...articles].sort((a, b) => {
+  return new Date(b.data.date) - new Date(a.data.date);
+});
+
+// Get first 4 articles from sortedArticles array
+const latestArticles = sortedArticles.slice(0, 4).map((article) => {
+  const category = article.data.categories[0].toLowerCase();
+  const replaceEn = article.slug.replace('en/', '');
+  return {
+    ...article,
+    slug: `/${category}/${replaceEn}`,
+  };
+});
+---
+<section class="music container pt-5">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="section-title text-center fs-1">Latest from the blog</h2>
+    </div>
+  </div>
+  <div class="row pt-5">
+    {latestArticles.map((article) => (
+      <article class="post col-sm-6 col-lg-3">
+        <div class="post-image">
+          <img src={article.data.images[0]} alt={article.data.title} class="img-fluid" />
+        </div>
+        <h3 class="mt-3"><a href={article.slug}>{article.data.title}</a></h3>
+        <p>{article.data.summary}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<script>
+  // Make the whole article.post clickable. The link is coming from article > h3 > a.
+  const posts = document.querySelectorAll("article.post");
+  posts.forEach((post) => {
+    post.addEventListener("click", () => {
+      const link = post.querySelector("h3 > a").href;
+      window.open(link, "_blank");
+    });
+  });
+</script>
+
+<style>
+  article.post {
+    cursor: pointer;
+  }
+
+  article.post a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  article.post a:hover {
+    color: #af2424;
+  }
+</style>

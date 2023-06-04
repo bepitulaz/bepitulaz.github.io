@@ -2,17 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import MusicReleases from '../components/MusicReleases.astro';
+import LatestBlog from '../components/LatestBlog.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Home | Asep Bagja">
 	<Hero />
-
-	<section class="music container p-5">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="section-title text-center fs-1">Music releases</h2>
-			</div>
-		</div>
-		<MusicReleases />
-	</section>
+	<MusicReleases />
+	<LatestBlog />
+	<Footer />
 </Layout>
