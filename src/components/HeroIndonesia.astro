@@ -1,0 +1,32 @@
+---
+import heroImg from "../assets/web/hero.jpg";
+---
+
+<section class="row">
+  <div class="col-xs-12 col-sm-6 d-flex align-items-center">
+    <div class="container-fluid">
+      <header class="py-5">
+        <h1 class="text-light">Halo! Nama saya Asep.</h1>
+        <h2 class="text-light">Saya melakukan pengembangan perangkat lunak dan produksi musik untuk senang-senang 🎉 dan komersial 💶</h2>
+        <nav class="mt-4">
+          <a class="btn btn-outline-light" href="/id/tentang">Tentang saya</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <img
+      src={heroImg.src}
+      width={heroImg.width}
+      height={heroImg.height}
+      class="img-fluid"
+      alt="Gambar utama Asep"
+    />
+  </div>
+</section>
+
+<style>
+  section.row {
+    background: linear-gradient(270deg,#981313,#af2424);
+  }
+</style>

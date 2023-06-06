@@ -1,6 +1,12 @@
 ---
 import { getCollection } from "astro:content";
 
+export interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
 const musicCollection = await getCollection("music", ({ id }) => id === "releases");
 const releases = musicCollection[0].data.records;
 
@@ -10,7 +16,7 @@ const latestReleases = releases.slice(-4).reverse();
 <section class="music container pt-5">
   <div class="row">
     <div class="col-12">
-      <h2 class="section-title text-center fs-1">Music releases</h2>
+      <h2 class="section-title text-center fs-1">{title}</h2>
     </div>
   </div>
   <div class="row py-5">

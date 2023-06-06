@@ -1,8 +1,15 @@
 ---
 import { getCollection } from "astro:content";
 
+export interface Props {
+	title: string;
+  lang: string;
+}
+
+const { title, lang } = Astro.props;
+
 const articles = await getCollection("blog", ({ id }) => {
-  return id.startsWith('en/');
+  return id.startsWith(`${lang}/`);
 });
 
 // Sort array of articles descending by date (newest first) in immutable way
@@ -13,17 +20,17 @@ const sortedArticles = [...articles].sort((a, b) => {
 // Get first 4 articles from sortedArticles array
 const latestArticles = sortedArticles.slice(0, 4).map((article) => {
   const category = article.data.categories[0].toLowerCase();
-  const replaceEn = article.slug.replace('en/', '');
+  const replaceLang = article.slug.replace(`${lang}/`, '');
   return {
     ...article,
-    slug: `/${category}/${replaceEn}`,
+    slug: lang === 'en' ? `/${category}/${replaceLang}` : `/${lang}/${category}/${replaceLang}`,
   };
 });
 ---
 <section class="music container pt-5">
   <div class="row">
     <div class="col-12">
-      <h2 class="section-title text-center fs-1">Latest from the blog</h2>
+      <h2 class="section-title text-center fs-1">{title}</h2>
     </div>
   </div>
   <div class="row pt-5">
@@ -45,7 +52,10 @@ const latestArticles = sortedArticles.slice(0, 4).map((article) => {
   posts.forEach((post) => {
     post.addEventListener("click", () => {
       const link = post.querySelector("h3 > a").href;
-      window.open(link, "_blank");
+
+      // navigate to the link without opening a new tab
+      window.location.href = link;
+
     });
   });
 </script>
