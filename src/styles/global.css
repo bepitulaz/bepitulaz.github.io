@@ -1,0 +1,22 @@
+:root {
+  --asep-primary: #af2424;
+  --asep-secondary: #af6324;
+  --asep-tertiary: #1d8c1d;
+  --asep-quaternary: #166969;
+  --asep-red-1: #630000;
+  --asep-red-2: #8d0b0b;
+  --asep-red-3: #cd4343;
+  --asep-red-4: #f17474;
+  --asep-brown-1: #632d00;
+  --asep-brown-2: #8d460b;
+  --asep-brown-3: #cd8143;
+  --asep-brown-4: #f1ac74;
+  --asep-green-1: #004f00;
+  --asep-green-2: #097109;
+  --asep-green-3: #36a436;
+  --asep-green-4: #5dc15d;
+  --asep-blue-1: #003b3b;
+  --asep-blue-2: #075555;
+  --asep-blue-3: #287b7b;
+  --asep-blue-4: #459191;
+}

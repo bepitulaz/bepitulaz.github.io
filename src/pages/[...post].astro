@@ -37,18 +37,66 @@ const formattedDate = date.toLocaleDateString("en-GB", {
 <Layout title={`${article.data.title} | Asep Bagja`}>
   <Navbar />
   <main class="container">
-    <section class="row">
+    <article class="row blog">
       <hgroup class="col-12 mt-5 mb-2">
         <h1>{article.data.title}</h1>
-        <p>{article.data.summary}</p>
-        <p class="text-muted border-bottom border-dark border-3 pb-3">
+        <p class="lead">{article.data.summary}</p>
+        <p class="text-muted border-bottom border-dark border-3 pb-3 ">
           <time datetime={article.data.date}>{formattedDate}</time>
           <span class="mx-2">•</span>
-          <span>{article.data.categories.join(', ')}</span>
+          <span class="category-text">{article.data.categories.join(', ')}</span>
         </p>
       </hgroup>
-    </section>
-    <Content />
+      <Content />
+    </article>
   </main>
   <Footer />
 </Layout>
+
+<style is:global>
+  article.blog a {
+    color: var(--asep-red-3);
+    text-decoration-style: dotted;
+    font-weight: normal;
+  }
+
+  article.blog a:hover {
+    color: var(--asep-primary);
+  }
+
+  article.blog p {
+    font-size: 1.1rem;
+  }
+
+  article.blog ol, article.blog ul {
+    margin-left: 2.5rem;
+    font-size: 1.1rem;
+  }
+
+  article.blog .figure {
+    text-align: center;
+  }
+
+  article.blog .figure img {
+    width: 70%;
+  }
+
+  hgroup .category-text {
+    background-color: var(--asep-blue-4);
+    color: var(--bs-light);
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+  }
+
+  @media (max-width: 575.98px) {
+    article.blog .figure img {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    article.blog .figure img {
+      width: 100%;
+    }
+  }
+</style>
