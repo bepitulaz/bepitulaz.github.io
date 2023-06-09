@@ -1,0 +1,50 @@
+---
+export interface Props {
+  title: string;
+  excerpt: string;
+  href: string;
+  imageSrc: string;
+  imageAlt: string;
+}
+
+const { title, excerpt, href, imageSrc, imageAlt } = Astro.props;
+---
+<article class="col-sm-12 col-lg-3 pb-lg-4">
+  <div class="image-container">
+    <img src={imageSrc} alt={imageAlt} class="img-fluid" />
+  </div>
+  <div class="pt-3 card-summary">
+    <a href={href} title={title}>
+      <h4>{title}</h4>
+    </a>
+    <p>{excerpt}</p>
+  </div>
+</article>
+
+<style>
+  .image-container {
+    height: 200px;
+    position: relative;
+    width: 100%;
+  }
+
+  .image-container img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+  .card-summary p {
+    font-family: "Source Serif 4", serif;
+    font-size: 1.2rem;
+  }
+
+  .card-summary a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  .card-summary a:hover {
+    color: var(--asep-primary);
+  }
+</style>

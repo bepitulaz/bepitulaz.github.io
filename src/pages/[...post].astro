@@ -37,48 +37,100 @@ const formattedDate = date.toLocaleDateString("en-GB", {
 <Layout title={`${article.data.title} | Asep Bagja`}>
   <Navbar />
   <main class="container">
-    <article class="row blog">
-      <hgroup class="col-12 mt-5 mb-2">
-        <h1>{article.data.title}</h1>
-        <p class="lead">{article.data.summary}</p>
-        <p class="text-muted border-bottom border-dark border-3 pb-3 ">
-          <time datetime={article.data.date}>{formattedDate}</time>
-          <span class="mx-2">•</span>
-          <span class="category-text">{article.data.categories.join(', ')}</span>
-        </p>
-      </hgroup>
-      <Content />
+    <article class="row">
+      <div class="col-sm-12 col-lg-10 offset-lg-1 mt-5 mb-2">
+        <hgroup>
+          <h1>{article.data.title}</h1>
+          <p class="lead fst-italic">{article.data.summary}</p>
+          <p class="text-muted border-bottom border-dark border-3 pb-3">
+            <time datetime={article.data.date}>{formattedDate}</time>
+            <span class="mx-2">•</span>
+            {
+              article.data.categories.map((cat) => (
+                <span class="category-text">
+                  <a href={`/${cat.toLowerCase()}`}>{cat.toLowerCase()}</a>
+                </span>
+              ))
+            }
+          </p>
+        </hgroup>
+        <div class="blog">
+          <Content />
+        </div>
+      </div>
     </article>
   </main>
   <Footer />
 </Layout>
 
 <style is:global>
-  article.blog a {
+  div.blog a {
     color: var(--asep-red-3);
     text-decoration-style: dotted;
     font-weight: normal;
   }
 
-  article.blog a:hover {
+  div.blog a:hover {
     color: var(--asep-primary);
   }
 
-  article.blog p {
-    font-size: 1.1rem;
+  div.blog p {
+    font-family: "Source Serif 4", serif;
+    font-size: 1.2rem;
+    line-height: 2.25rem;
   }
 
-  article.blog ol, article.blog ul {
+  div.blog h3 {
+    padding-top: 2rem;
+    padding-bottom: 1.1rem;
+  }
+
+  div.blog ol,
+  div.blog ul {
     margin-left: 2.5rem;
-    font-size: 1.1rem;
+    font-family: "Source Serif 4", serif;
+    font-size: 1.2rem;
+    line-height: 2.25rem;
   }
 
-  article.blog .figure {
+  div.blog .figure {
     text-align: center;
   }
 
-  article.blog .figure img {
+  div.blog .figure img {
     width: 70%;
+  }
+
+  div.blog .category-text a {
+    color: var(--bs-light);
+    text-decoration: none;
+  }
+
+  div.blog blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+  }
+
+  div.blog blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+
+  div.blog blockquote p {
+    display: inline;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+  }
+
+  div.blog blockquote cite {
+    font-size: 1rem;
   }
 
   hgroup .category-text {
@@ -88,14 +140,19 @@ const formattedDate = date.toLocaleDateString("en-GB", {
     border-radius: 5px;
   }
 
+  hgroup .category-text a {
+    color: var(--bs-light);
+    text-decoration: none;
+  }
+
   @media (max-width: 575.98px) {
-    article.blog .figure img {
+    div.blog .figure img {
       width: 100%;
     }
   }
 
   @media (max-width: 767.98px) {
-    article.blog .figure img {
+    div.blog .figure img {
       width: 100%;
     }
   }
