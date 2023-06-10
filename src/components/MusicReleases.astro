@@ -3,20 +3,23 @@ import { getCollection } from "astro:content";
 
 export interface Props {
 	title: string;
+  summary?: string;
+  isShowAll?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, isShowAll = false, summary } = Astro.props;
 
 const musicCollection = await getCollection("music", ({ id }) => id === "releases");
 const releases = musicCollection[0].data.records;
 
 // take the last 4 releases and reverse the order so the latest release is first
-const latestReleases = releases.slice(-4).reverse();
+const latestReleases = isShowAll ? releases : releases.slice(0, 4);
 ---
 <section class="music container pt-5">
   <div class="row">
     <div class="col-12">
       <h2 class="section-title text-center fs-1">{title}</h2>
+      {summary && <p class="lead text-center">{summary}</p>}
     </div>
   </div>
   <div class="row py-5">

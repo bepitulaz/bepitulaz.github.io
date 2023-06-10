@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import MusicReleases from '../components/MusicReleases.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Discography | Asep Bagja">
+	<Navbar />
+	<MusicReleases title="Discography" isShowAll={true} summary="My released singles and albums" />
+	<Footer />
+</Layout>

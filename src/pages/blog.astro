@@ -40,6 +40,12 @@ const articlesMap = Object.fromEntries(articlesByCategory);
 <Layout title="Blog | Asep Bagja">
   <Navbar />
   <main class="container py-5">
+    <div class="row mb-5">
+      <div class="col-12">
+        <h2 class="section-title text-center fs-1">Blog</h2>
+        <p class="lead text-center">My writing in the topic that I'm interested</p>
+      </div>
+    </div>
     {
       categories.map((category: string) => (
         <>
