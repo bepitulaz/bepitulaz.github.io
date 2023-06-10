@@ -13,7 +13,7 @@ const musicCollection = await getCollection("music", ({ id }) => id === "release
 const releases = musicCollection[0].data.records;
 
 // take the last 4 releases and reverse the order so the latest release is first
-const latestReleases = isShowAll ? releases : releases.slice(0, 4);
+const latestReleases = isShowAll ? [...releases].reverse() : releases.slice(-4).reverse();
 ---
 <section class="music container pt-5">
   <div class="row">
