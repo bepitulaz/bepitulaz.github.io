@@ -1,0 +1,84 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import NavbarIndonesia from "../../components/NavbarIndonesia.astro";
+import Footer from "../../components/Footer.astro";
+import OneGridArticle from "../../components/OneGridArticle.astro";
+
+const articles = await getCollection("blog", ({ id }) => {
+  return id.startsWith("id/");
+});
+
+const sortedByLatestDate = articles.sort((a, b) => {
+  return new Date(b.data.date) - new Date(a.data.date);
+});
+
+const populateCategories = (articles) => {
+  const categories = articles.reduce((acc, article) => {
+    const categories = article.data.categories.map((category) => category);
+    return [...acc, ...categories];
+  }, []);
+  return [...new Set(categories)];
+};
+
+const categories = populateCategories(articles);
+
+// Create a new array of articles with the category name.
+// The expected output is an array with the following shape:
+// [[category, [articles]], [category, [articles]], ...]
+// Use sortedByLatestDate and categories to create the array.
+const articlesByCategory = categories.map((category: string) => {
+  const articles = sortedByLatestDate.filter((article) => {
+    return article.data.categories.includes(category);
+  });
+  return [category, articles];
+});
+
+const articlesMap = Object.fromEntries(articlesByCategory);
+---
+
+<Layout title="Blog | Asep Bagja">
+  <NavbarIndonesia />
+  <main class="container py-5">
+    {
+      categories.map((category: string) => (
+        <>
+          <section class="row">
+            <div class="col-12">
+              <div class="d-flex justify-content-between align-items-center">
+                <h1 class="border-bottom border-2 border-dark">{category}</h1>
+                {articlesMap[category].length > 4 && (
+                  <a href={`/id/${category.toLowerCase()}`} class="btn btn-outline-dark">See all</a>
+                )}
+              </div>
+            </div>
+          </section>
+          <section class="row pt-4">
+            {articlesMap[category].map((article, index) => {
+              if (index > 3) return;
+              return (
+                <OneGridArticle
+                  title={article.data.title}
+                  excerpt={article.data.summary}
+                  imageSrc={article.data.images?.[0]}
+                  imageAlt={`Gambar dari artikel ${article.data.title}`}
+                  href={`/id/${article.data.categories?.[0].toLowerCase()}/${article.slug.replace(
+                    "id/",
+                    ""
+                  )}`}
+                />
+              );
+            })}
+          </section>
+        </>
+      ))
+    }
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  h1 {
+    width: fit-content;
+  }
+</style>

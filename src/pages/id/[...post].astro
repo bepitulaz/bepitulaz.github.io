@@ -26,7 +26,7 @@ const { article } = Astro.props;
 const { Content } = await article.render();
 // Format date into DD MMMM YYYY from article.data.date
 const date = new Date(article.data.date);
-const formattedDate = date.toLocaleDateString("en-GB", {
+const formattedDate = date.toLocaleDateString("id-ID", {
   year: "numeric",
   month: "long",
   day: "numeric",
