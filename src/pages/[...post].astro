@@ -70,11 +70,31 @@ const formattedDate = date.toLocaleDateString("en-GB", {
         <div class="blog">
           <Content />
         </div>
+        <div id="disqus_thread" class="mt-3"></div>
       </div>
     </article>
   </main>
   <Footer />
 </Layout>
+
+<script is:inline>
+  var disqus_config = function () {
+    this.page.url = window.location.href; // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier =
+      window.location.href.split("/").at(-1) === ""
+        ? window.location.href.split("/").at(-2)
+        : window.location.href.split("/").at(-1); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+
+  (function () {
+    // DON'T EDIT BELOW THIS LINE
+    var d = document,
+      s = d.createElement("script");
+    s.src = "https://asepnew.disqus.com/embed.js";
+    s.setAttribute("data-timestamp", +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
 
 <style is:global>
   div.blog a {
@@ -110,7 +130,8 @@ const formattedDate = date.toLocaleDateString("en-GB", {
     text-align: center;
   }
 
-  div.blog .figure img, div.blog p img {
+  div.blog .figure img,
+  div.blog p img {
     width: 70%;
     display: block;
     margin: auto;
