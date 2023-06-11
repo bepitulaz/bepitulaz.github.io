@@ -8,8 +8,46 @@ import heroImg from "../assets/web/hero.jpg";
       <header class="py-5">
         <h1 class="text-light">Halo! Nama saya Asep.</h1>
         <h2 class="text-light">Saya melakukan pengembangan perangkat lunak dan produksi musik untuk senang-senang 🎉 dan komersial 💶</h2>
-        <nav class="mt-4">
+        <nav class="d-flex mt-4">
           <a class="btn btn-outline-light" href="/id/tentang">Tentang saya</a>
+          <div class="social-links">
+            <a
+              class="btn btn-light"
+              href="https://youtube.com/@bepitulaz"
+              target="_blank"
+              rel="noopener"
+              title="YouTube"
+            >
+              <i class="bi bi-youtube"></i>
+            </a>
+            <a
+              class="btn btn-light"
+              href="https://open.spotify.com/artist/3ZluC2z0z35Pdv8Aky7qMx?si=mx3WgUSeSI-rtgIuCQTlkw"
+              target="_blank"
+              rel="noopener"
+              title="Spotify"
+            >
+              <i class="bi bi-spotify"></i>
+            </a>
+            <a
+              class="btn btn-light"
+              href="https://twitter.com/bepitulaz"
+              target="_blank"
+              rel="noopener"
+              title="Twitter"
+            >
+              <i class="bi bi-twitter"></i>
+            </a>
+            <a
+              class="btn btn-light"
+              href="https://instagram.com/bepitulaz"
+              target="_blank"
+              rel="noopener"
+              title="Instagram"
+            >
+              <i class="bi bi-instagram"></i>
+            </a>
+          </div>
         </nav>
       </header>
     </div>
@@ -28,5 +66,13 @@ import heroImg from "../assets/web/hero.jpg";
 <style>
   section.row {
     background: linear-gradient(270deg,#981313,#af2424);
+  }
+
+  nav {
+    gap: 1.5rem;
+  }
+
+  div.social-links {
+    gap: 1rem;
   }
 </style>
