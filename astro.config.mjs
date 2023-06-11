@@ -4,7 +4,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://bepitulaz.github.io",
+  site: "https://www.asepbagja.com",
   integrations: [mdx()],
   experimental: {
     assets: true,
