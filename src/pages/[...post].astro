@@ -17,12 +17,16 @@ export async function getStaticPaths() {
       params: {
         post: `${category}/${slug}`,
       },
-      props: { article },
+      props: {
+        article,
+        slug: `${category}/${slug}`,
+        image: article.data.images[0],
+      },
     };
   });
 }
 
-const { article } = Astro.props;
+const { article, slug, image } = Astro.props;
 const { Content } = await article.render();
 
 // Format date into DD MMMM YYYY from article.data.date
@@ -34,7 +38,16 @@ const formattedDate = date.toLocaleDateString("en-GB", {
 });
 ---
 
-<Layout title={`${article.data.title} | Asep Bagja`}>
+<Layout
+  title={`${article.data.title} | Asep Bagja`}
+  description={article.data.summary}
+  openGraph={{
+    title: `${article.data.title} | Asep Bagja`,
+    url: "https://www.asepbagja.com/" + slug,
+    image: "https://www.asepbagja.com" + image,
+    type: "website",
+  }}
+>
   <Navbar />
   <main class="container">
     <article class="row">

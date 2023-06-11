@@ -12,7 +12,16 @@ const post = posts[0];
 const { Content } = await post.render();
 ---
 
-<Layout title="Blog | Asep Bagja">
+<Layout
+  title="About | Asep Bagja"
+  description="Who is Asep Bagja? Find out more about him, his background, and his works."
+  openGraph={{
+    title: `About | Asep Bagja`,
+    url: "https://www.asepbagja.com/about",
+    image: "https://www.asepbagja.com/images/about.jpg",
+    type: "website",
+  }}
+>
   <Navbar />
   <main class="container py-5">
     <div class="row mb-5">

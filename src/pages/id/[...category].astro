@@ -41,7 +41,16 @@ export async function getStaticPaths() {
 const { articles, category } = Astro.props;
 ---
 
-<Layout title={`${category} | Asep Bagja`}>
+<Layout
+  title={`${category} | Asep Bagja`}
+  description={`Tulisan saya pada topik ${category}`}
+  openGraph={{
+    title: `${category} | Asep Bagja`,
+    url: "https://www.asepbagja.com/id/" + category.toLowerCase(),
+    image: "https://www.asepbagja.com" + articles[0].data.images?.[0],
+    type: "website",
+  }}
+>
   <NavbarIndonesia />
   <main class="container py-5">
     <section class="row">

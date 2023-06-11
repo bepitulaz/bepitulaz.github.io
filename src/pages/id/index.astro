@@ -7,7 +7,16 @@ import LatestBlog from "../../components/LatestBlog.astro";
 import Footer from "../../components/Footer.astro";
 ---
 
-<Layout title="Beranda | Asep Bagja">
+<Layout
+  title="Beranda | Asep Bagja"
+  description="Blog pribadi tempat saya berbagi pendapat dan topik menarik yang saya sukai."
+  openGraph={{
+    title: "Beranda | Asep Bagja",
+    url: "https://www.asepbagja.com/id",
+    image: "https://www.asepbagja.com/images/paljassaare.jpg",
+    type: "website",
+  }}
+>
   <NavbarIndonesia />
   <HeroIndonesia />
   <MusicReleases title="Rilis musik terbaru" />

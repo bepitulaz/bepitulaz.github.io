@@ -1,16 +1,25 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import MusicReleases from '../components/MusicReleases.astro';
-import LatestBlog from '../components/LatestBlog.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import MusicReleases from "../components/MusicReleases.astro";
+import LatestBlog from "../components/LatestBlog.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Home | Asep Bagja">
-	<Navbar />
-	<Hero />
-	<MusicReleases title="Latest music releases" />
-	<LatestBlog title="Latest from the blog" lang="en" />
-	<Footer />
+<Layout
+  title="Home | Asep Bagja"
+  description="My personal blog where I share my opinion and topic that I'm interested."
+	openGraph={{
+		title: "Home | Asep Bagja",
+		url: "https://www.asepbagja.com",
+		image: "https://www.asepbagja.com/images/paljassaare.jpg",
+		type: "website",
+	}}
+>
+  <Navbar />
+  <Hero />
+  <MusicReleases title="Latest music releases" />
+  <LatestBlog title="Latest from the blog" lang="en" />
+  <Footer />
 </Layout>

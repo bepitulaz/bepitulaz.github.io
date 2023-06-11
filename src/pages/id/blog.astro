@@ -37,13 +37,24 @@ const articlesByCategory = categories.map((category: string) => {
 const articlesMap = Object.fromEntries(articlesByCategory);
 ---
 
-<Layout title="Blog | Asep Bagja">
+<Layout
+  title="Blog | Asep Bagja"
+  description="Tulisan saya pada topik-topik yang saya senangi"
+  openGraph={{
+    title: "Blog | Asep Bagja",
+    url: "https://www.asepbagja.com/id/blog",
+    image: "https://www.asepbagja.com/images/blog-id.png",
+    type: "website",
+  }}
+>
   <NavbarIndonesia />
   <main class="container py-5">
     <div class="row mb-5">
       <div class="col-12">
         <h2 class="section-title text-center fs-1">Blog</h2>
-        <p class="lead text-center">Tulisan saya pada topik yang saya senangi</p>
+        <p class="lead text-center">
+          Tulisan saya pada topik yang saya senangi
+        </p>
       </div>
     </div>
     {
@@ -54,7 +65,12 @@ const articlesMap = Object.fromEntries(articlesByCategory);
               <div class="d-flex justify-content-between align-items-center">
                 <h1 class="border-bottom border-2 border-dark">{category}</h1>
                 {articlesMap[category].length > 4 && (
-                  <a href={`/id/${category.toLowerCase()}`} class="btn btn-outline-dark">Lihat semua</a>
+                  <a
+                    href={`/id/${category.toLowerCase()}`}
+                    class="btn btn-outline-dark"
+                  >
+                    Lihat semua
+                  </a>
                 )}
               </div>
             </div>

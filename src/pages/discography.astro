@@ -1,12 +1,25 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import MusicReleases from '../components/MusicReleases.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import MusicReleases from "../components/MusicReleases.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Discography | Asep Bagja">
-	<Navbar />
-	<MusicReleases title="Discography" isShowAll={true} summary="My released singles and albums" />
-	<Footer />
+<Layout
+  title="Discography | Asep Bagja"
+  description="Asep Bagja's released singles and albums."
+  openGraph={{
+    title: "Discography | Asep Bagja",
+    url: "https://www.asepbagja.com/discography",
+    image: "https://www.asepbagja.com/images/discography.png",
+    type: "website",
+  }}
+>
+  <Navbar />
+  <MusicReleases
+    title="Discography"
+    isShowAll={true}
+    summary="My released singles and albums"
+  />
+  <Footer />
 </Layout>
