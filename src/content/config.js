@@ -27,7 +27,38 @@ const blogCollection = defineCollection({
   }),
 });
 
+const workspaceCollection = defineCollection({
+  type: "data",
+  schema: z.object({
+    laptop: z.array(
+      z.object({
+        name: z.string(),
+        description: z.string(),
+        image: z.string(),
+        link: z.string(),
+      })
+    ),
+    coding: z.array(
+      z.object({
+        name: z.string(),
+        description: z.string(),
+        image: z.string(),
+        link: z.string(),
+      })
+    ),
+    music: z.array(
+      z.object({
+        name: z.string(),
+        description: z.string(),
+        image: z.string(),
+        link: z.string(),
+      })
+    ),
+  }),
+});
+
 export const collections = {
   music: musicCollection,
   blog: blogCollection,
+  workspace: workspaceCollection,
 };

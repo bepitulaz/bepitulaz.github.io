@@ -1,0 +1,68 @@
+{
+  "laptop": [
+    {
+      "name": "MacBook Pro 13\" 2020, M1, 8GB, 512GB SSD",
+      "description": "The office laptop for my full-time software engineering job.",
+      "image": "/workspace-img/m1.png",
+      "link": "https://support.apple.com/kb/SP824?locale=en_GB"
+    },
+    {
+      "name": "MacBook Pro 13\" 2022, M2, 8GB, 512GB SSD",
+      "description": "My personal laptop for personal project and content creation.",
+      "image": "/workspace-img/m2.png",
+      "link": "https://support.apple.com/kb/SP870?locale=en_GB"
+    }
+  ],
+  "coding": [
+    {
+      "name": "Apple Magic Keyboard",
+      "description": "The bluetooth keyboard",
+      "image": "/workspace-img/keyboard.png",
+      "link": "https://www.apple.com/shop/product/MK2A3LL/A/magic-keyboard-us-english"
+    },
+    {
+      "name": "Apple Magic Mouse",
+      "description": "The bluetooth mouse",
+      "image": "/workspace-img/mouse.png",
+      "link": "https://www.apple.com/shop/product/MK2E3AM/A/magic-mouse-white-multi-touch-surface"
+    },
+    {
+      "name": "Visual Studio Code",
+      "description": "Text editor for writing code",
+      "image": "/workspace-img/vscode.png",
+      "link": "https://code.visualstudio.com"
+    },
+    {
+      "name": "Github Copilot",
+      "description": "AI assistant for writing code",
+      "image": "/workspace-img/copilot.png",
+      "link": "https://code.visualstudio.com"
+    },
+    {
+      "name": "iTerm 2",
+      "description": "Terminal emulator for MacOS",
+      "image": "https://iterm2.com/img/logo2x.jpg",
+      "link": "https://iterm2.com"
+    }
+  ],
+  "music": [
+    {
+      "name": "Apple Logic Pro",
+      "description": "Digital audio workstation for music production",
+      "image": "/workspace-img/logicpro.png",
+      "link": "https://www.apple.com/logic-pro/"
+    },
+    {
+      "name": "Apple MainStage",
+      "description": "Software for doing live music performance",
+      "image": "/workspace-img/mainstage.png",
+      "link": "https://www.apple.com/mainstage/"
+    },
+    {
+      "name": "Arturia MiniFuse 4",
+      "description": "Audio interface for connecting musical instruments to the computer",
+      "image": "/workspace-img/minifuse4.png",
+      "link": "https://www.arturia.com/products/audio/minifuse/minifuse4"
+    }
+  ]
+}
