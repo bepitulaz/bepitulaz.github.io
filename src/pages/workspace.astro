@@ -29,58 +29,75 @@ const workspace = workspaceCollection[0].data;
         <p class="lead text-center">
           Devices and software that I use for coding and producing music
         </p>
+        <img src="/workspace-img/workspace.jpg" alt="My workspace" class="img-fluid rounded mx-auto d-block" width="500" />
       </div>
     </div>
     <section class="row mb-5">
       <div class="col-12">
         <h4 class="badge">Laptop</h4>
       </div>
-      {workspace.laptop.map((item) => (
-        <article class="col-sm-6 col-md-4 col-lg-3 py-1">
-          <div class="card" style="width: 100%;">
-            <img src={item.image} class="card-img-top" alt={item.name}>
-            <div class="card-body">
-              <h5 class="card-title">{item.name}</h5>
-              <p class="card-text">{item.description}</p>
-              <a href={item.link} target="_blank" rel="noopener">See on official website</a>
+      {
+        workspace.laptop.map((item) => (
+          <article class="col-sm-6 col-md-4 col-lg-3 py-1">
+            <div class="card" style="width: 100%;">
+              <img src={item.image} class="card-img-top" alt={item.name} />
+              <div class="card-body">
+                <h5 class="card-title">{item.name}</h5>
+                <p class="card-text">{item.description}</p>
+                <a href={item.link} target="_blank" rel="noopener">
+                  See on official website
+                </a>
+              </div>
             </div>
-          </div>
-        </article>
-      ))}
+          </article>
+        ))
+      }
     </section>
     <section class="row mb-5">
       <div class="col-12">
         <h4 class="badge">Software development</h4>
       </div>
-      {workspace.coding.map((item) => (
-        <article class="col-sm-6 col-md-4 col-lg-3 py-1">
-          <div class="card" style="width: 100%;">
-            <img src={item.image} class="card-img-top" alt={item.name}>
-            <div class="card-body">
-              <h5 class="card-title">{item.name}</h5>
-              <p class="card-text">{item.description}</p>
-              <a href={item.link} target="_blank" rel="noopener">See on official website</a>
+      {
+        workspace.coding.map((item) => (
+          <article class="col-sm-6 col-md-4 col-lg-3 py-1">
+            <div class="card" style="width: 100%;">
+              <img src={item.image} class="card-img-top" alt={item.name} />
+              <div class="card-body">
+                <h5 class="card-title">{item.name}</h5>
+                <p class="card-text">{item.description}</p>
+                <a href={item.link} target="_blank" rel="noopener">
+                  See on official website
+                </a>
+              </div>
             </div>
-          </div>
-        </article>
-      ))}
+          </article>
+        ))
+      }
     </section>
     <section class="row">
       <div class="col-12">
         <h4 class="badge">Music production</h4>
       </div>
-      {workspace.music.map((item) => (
-        <article class="col-sm-6 col-md-4 col-lg-3 py-1">
-          <div class="card" style="width: 100%;">
-            <img src={item.image} class="card-img-top" alt={item.name}>
-            <div class="card-body">
-              <h5 class="card-title">{item.name}</h5>
-              <p class="card-text">{item.description}</p>
-              <a href={item.link} target="_blank" rel="noopener">See on official website</a>
+      {
+        workspace.music.map((item) => (
+          <article class="col-sm-6 col-md-4 col-lg-3 py-1">
+            <div class="card" style="width: 100%;">
+              <img src={item.image} class="card-img-top" alt={item.name} />
+              <div class="card-body">
+                <h5 class="card-title">{item.name}</h5>
+                <p class="card-text">{item.description}</p>
+                {item.link === "N/A" ? (
+                  <span>No website</span>
+                ) : (
+                  <a href={item.link} target="_blank" rel="noopener">
+                    See on official website
+                  </a>
+                )}
+              </div>
             </div>
-          </div>
-        </article>
-      ))}
+          </article>
+        ))
+      }
     </section>
   </main>
   <Footer />

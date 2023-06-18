@@ -48,7 +48,7 @@
   "music": [
     {
       "name": "Apple Logic Pro",
-      "description": "Digital audio workstation for music production",
+      "description": "Digital Audio Workstation (DAW) for music production",
       "image": "/workspace-img/logicpro.png",
       "link": "https://www.apple.com/logic-pro/"
     },
@@ -63,6 +63,72 @@
       "description": "Audio interface for connecting musical instruments to the computer",
       "image": "/workspace-img/minifuse4.png",
       "link": "https://www.arturia.com/products/audio/minifuse/minifuse4"
+    },
+    {
+      "name": "Arturia MiniLab 3",
+      "description": "25 keys MIDI controller for controlling Logic Pro and MainStage",
+      "image": "/workspace-img/minilab3.png",
+      "link": "https://www.arturia.com/products/hybrid-synths/minilab-3/overview"
+    },
+    {
+      "name": "Korg Kross 2 88 MB",
+      "description": "88 keys synthesizer workstation for playing piano and other instruments",
+      "image": "/workspace-img/kross2.png",
+      "link": "https://www.korg.com/us/products/synthesizers/kross2_88mb/"
+    },
+    {
+      "name": "Korg volca sample",
+      "description": "Digital sample sequencer for playing drum and percussions without DAW",
+      "image": "/workspace-img/volca-sample.png",
+      "link": "https://www.korg.com/us/products/dj/volca_sample/"
+    },
+    {
+      "name": "Korg volca modular",
+      "description": "Micro modular synthesizer for creating experimental sounds",
+      "image": "/workspace-img/volca-modular.png",
+      "link": "https://www.korg.com/us/products/dj/volca_modular/"
+    },
+    {
+      "name": "Zoom MS-70CDR",
+      "description": "Multi stomp chorus, delay, and reverb effect pedal",
+      "image": "/workspace-img/cdr70.png",
+      "link": "https://zoomcorp.com/en/jp/multi-effects/multistomp-pedals/ms-70cdr/"
+    },
+    {
+      "name": "Zoom H1n",
+      "description": "Portable audio recorder for recording sound",
+      "image": "/workspace-img/h1n.png",
+      "link": "https://zoomcorp.com/en/de/handheld-recorders/handheld-recorders/h1n-handy-recorder/"
+    },
+    {
+      "name": "PreSonus Eris E3.5 BT",
+      "description": "Speaker for mixing and listening to music",
+      "image": "/workspace-img/e35bt.png",
+      "link": "https://www.presonus.com/en-US/monitors/media-reference-monitors/eris-series/2777500102.html"
+    },
+    {
+      "name": "SAMSON SR850",
+      "description": "Semi-open studio headphone for mixing and listening to music",
+      "image": "/workspace-img/sr850.png",
+      "link": "https://samsontech.com/products/headphones/sr-series/sr850/"
+    },
+    {
+      "name": "SAMSON C01",
+      "description": "Cardioid condenser microphone for vocal recording",
+      "image": "/workspace-img/c01.png",
+      "link": "https://samsontech.com/products/microphones/condenser-microphones/c01/"
+    },
+    {
+      "name": "RØDE M1",
+      "description": "Live performance dynamic microphone for vocal recording",
+      "image": "/workspace-img/rode-m1.png",
+      "link": "https://rode.com/en/microphones/live/m1"
+    },
+    {
+      "name": "Electric Kalimba",
+      "description": "A cheap unbrand electric kalimba for fun and experiment",
+      "image": "/workspace-img/kalimba.png",
+      "link": "N/A"
     }
   ]
 }
