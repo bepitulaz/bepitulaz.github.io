@@ -74,12 +74,37 @@ const workspace = workspaceCollection[0].data;
         ))
       }
     </section>
-    <section class="row">
+    <section class="row mb-5">
       <div class="col-12">
         <h4 class="badge">Music production</h4>
       </div>
       {
         workspace.music.map((item) => (
+          <article class="col-sm-6 col-md-4 col-lg-3 py-1">
+            <div class="card" style="width: 100%;">
+              <img src={item.image} class="card-img-top" alt={item.name} />
+              <div class="card-body">
+                <h5 class="card-title">{item.name}</h5>
+                <p class="card-text">{item.description}</p>
+                {item.link === "N/A" ? (
+                  <span>No website</span>
+                ) : (
+                  <a href={item.link} target="_blank" rel="noopener">
+                    See on official website
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+    <section class="row">
+      <div class="col-12">
+        <h4 class="badge">Video production</h4>
+      </div>
+      {
+        workspace.video.map((item) => (
           <article class="col-sm-6 col-md-4 col-lg-3 py-1">
             <div class="card" style="width: 100%;">
               <img src={item.image} class="card-img-top" alt={item.name} />

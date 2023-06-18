@@ -54,6 +54,14 @@ const workspaceCollection = defineCollection({
         link: z.string(),
       })
     ),
+    video: z.array(
+      z.object({
+        name: z.string(),
+        description: z.string(),
+        image: z.string(),
+        link: z.string(),
+      })
+    ),
   }),
 });
 

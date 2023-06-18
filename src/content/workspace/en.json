@@ -130,5 +130,25 @@
       "image": "/workspace-img/kalimba.png",
       "link": "N/A"
     }
+  ],
+  "video": [
+    {
+      "name": "Apple iPhone 14 Pro",
+      "description": "The phone for recording videos in my YouTube channel",
+      "image": "/workspace-img/iphone.jpg",
+      "link": "https://www.apple.com/iphone-14-pro/"
+    },
+    {
+      "name": "Apple Final Cut Pro",
+      "description": "Video editing software for editing YouTube videos",
+      "image": "/workspace-img/fcp.jpg",
+      "link": "https://www.apple.com/final-cut-pro/"
+    },
+    {
+      "name": "OBS Studio",
+      "description": "Screen recording software for recording music videos",
+      "image": "/workspace-img/obs.jpg",
+      "link": "https://obsproject.com"
+    }
   ]
 }
