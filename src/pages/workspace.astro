@@ -1,0 +1,116 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const workspaceCollection = await getCollection(
+  "workspace",
+  ({ id }) => id === "en"
+);
+const workspace = workspaceCollection[0].data;
+---
+
+<Layout
+  title={"My workspace configuration | Asep Bagja"}
+  description={"Devices and software that I use for coding and producing music"}
+  openGraph={{
+    title: `My workspace configuration | Asep Bagja`,
+    url: "https://www.asepbagja.com/workspace",
+    image: "https://www.asepbagja.com",
+    type: "website",
+  }}
+>
+  <Navbar />
+  <main class="container py-5">
+    <div class="row mb-5">
+      <div class="col-12">
+        <h2 class="section-title text-center fs-1">Workspace</h2>
+        <p class="lead text-center">
+          Devices and software that I use for coding and producing music
+        </p>
+        <img src="/workspace-img/workspace.jpg" alt="My workspace" class="img-fluid rounded mx-auto d-block" width="500" />
+      </div>
+    </div>
+    <section class="row mb-5">
+      <div class="col-12">
+        <h4 class="badge">Laptop</h4>
+      </div>
+      {
+        workspace.laptop.map((item) => (
+          <article class="col-sm-6 col-md-4 col-lg-3 py-1">
+            <div class="card" style="width: 100%;">
+              <img src={item.image} class="card-img-top" alt={item.name} />
+              <div class="card-body">
+                <h5 class="card-title">{item.name}</h5>
+                <p class="card-text">{item.description}</p>
+                <a href={item.link} target="_blank" rel="noopener">
+                  See on official website
+                </a>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+    <section class="row mb-5">
+      <div class="col-12">
+        <h4 class="badge">Software development</h4>
+      </div>
+      {
+        workspace.coding.map((item) => (
+          <article class="col-sm-6 col-md-4 col-lg-3 py-1">
+            <div class="card" style="width: 100%;">
+              <img src={item.image} class="card-img-top" alt={item.name} />
+              <div class="card-body">
+                <h5 class="card-title">{item.name}</h5>
+                <p class="card-text">{item.description}</p>
+                <a href={item.link} target="_blank" rel="noopener">
+                  See on official website
+                </a>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+    <section class="row">
+      <div class="col-12">
+        <h4 class="badge">Music production</h4>
+      </div>
+      {
+        workspace.music.map((item) => (
+          <article class="col-sm-6 col-md-4 col-lg-3 py-1">
+            <div class="card" style="width: 100%;">
+              <img src={item.image} class="card-img-top" alt={item.name} />
+              <div class="card-body">
+                <h5 class="card-title">{item.name}</h5>
+                <p class="card-text">{item.description}</p>
+                {item.link === "N/A" ? (
+                  <span>No website</span>
+                ) : (
+                  <a href={item.link} target="_blank" rel="noopener">
+                    See on official website
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  h4.badge {
+    background-color: var(--asep-blue-4);
+  }
+
+  a {
+    color: var(--asep-red-3);
+    text-decoration-style: dotted;
+    font-weight: normal;
+  }
+</style>
