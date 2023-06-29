@@ -4,7 +4,7 @@ date: 2023-06-29
 images:
 - "/blog-img/Screenshot-Sonastik.jpg"
 categories:
-- Estonia
+- Programming
 summary: "Simplify Estonian language learning with Sõnastik, the browser extension that provides in-depth definitions, examples, and word forms from sonaveeb.ee."
 featured: false
 ---
