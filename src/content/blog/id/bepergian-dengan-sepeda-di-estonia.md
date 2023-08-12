@@ -43,7 +43,7 @@ Saya biasanya bepergian ke luar kota dengan bus Lux Express, dan mereka bisa mem
 
 Sedangkan untuk kereta api antar kota, di Estonia hanya ada satu perusahaan. Namanya Elron. Mereka memiliki gerbong khusus untuk membawa sepeda. Sama seperti bus, dalam satu rangkaian kereta hanya ada tempat terbatas untuk membawa sepeda. Biasanya maksimum hanya 6. Tapi bedanya, kita tidak harus memesan tempat terlebih dahulu dari website. Hanya saja jika tidak memesan tempat, akan ada kemungkinan sepeda tidak bisa masuk karena tempatnya sudah penuh. Jadi, tetap lebih baik memesan tempat terlebih dahulu lewat website Elron.
 
-Saat musim dingn, biasanya Elron menggratiskan biaya untuk membawa sepeda. Tentu saja karena sangat jarang orang bersepeda di musim dingin. Kebalikannya saat musim panas, ada biaya tambahan untuk membawa sepeda. Tetapi biayanya tidak terlalu mahal, kurang dari 2 euro tergantung jarak tempuhnya.
+Saat musim dingin, biasanya Elron menggratiskan biaya untuk membawa sepeda. Tentu saja karena sangat jarang orang bersepeda di musim dingin. Kebalikannya saat musim panas, ada biaya tambahan untuk membawa sepeda. Tetapi biayanya tidak terlalu mahal, kurang dari 2 euro tergantung jarak tempuhnya.
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); grid-gap: 20px; padding: 10px 0;">
   <img src="https://www.asepbagja.com/blog-img/bike-on-train-1.jpeg" style="width: 100%; height: 100%; object-fit: cover;" alt="Sepeda wajib digantung di dalam kereta">
