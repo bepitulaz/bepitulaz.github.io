@@ -9,6 +9,8 @@ summary: "Why bother to buy a keyboard workstation if a laptop with a DAW and MI
 featured: false
 ---
 
+> You can read <a href="https://www.asepbagja.com/music/use-korg-kross2-2023/" target="_blank">Korg Kross 2 Workstation Keyboard For Live Performance</a> if you want to know how I use my Korg Kross 2 and my review after 1,5 years of writing this article.
+
 If you are a musician and your main musical instrument is a keyboard, you may hear about a keyboard workstation, synthesizer workstation, or workstation. What is it exactly? Do I need one?
 
 The workstation is special hardware in the shape of a (usually) keyboard. Typically comes with synthesizer engine, multi-effects processor, audio interface, sampler, drum pattern designer, and sequencer. You can use their preset sounds or do advanced sound editing to make a new sound. You can record and playback your song directly into its sequencer. Since it has an audio interface, you can also record external audio such as your voice, guitar, other synths, etc. The coolest part is you can easily combine (splitting and layering) multiple sounds of instruments with it.

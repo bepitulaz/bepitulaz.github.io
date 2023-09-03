@@ -64,7 +64,7 @@ I use Kross 2's sequencer only for playing back the MIDI data.
 
 When composing music, I do it on my Mac with Logic Pro software. Kross 2 will act as an external sound module of Logic Pro. Then, I will export that MIDI data to the sequencer.
 
-I also use an additional MIDI controller to add more knobs and faders for real-time control. As you can see in my video at the beginning of this article, I map my Arturia MiniLab 3 to Kross2. I can control the volume of several tracks in the sequencer. Also, I can control the filter of the oscillator and the envelope generator.
+I also use an additional MIDI controller to add more knobs and faders for real-time control. As you can see in my video at the beginning of this article, I map my Arturia MiniLab 3 to Kross 2. I can control the volume of several tracks in the sequencer. Also, I can control the filter of the oscillator and the envelope generator.
 
 <div class="text-center">
 <figure class="figure">
