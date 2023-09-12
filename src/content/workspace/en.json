@@ -70,6 +70,13 @@
       "image": "/workspace-img/minilab3.png",
       "link": "https://www.arturia.com/products/hybrid-synths/minilab-3/overview"
     },
+
+    {
+      "name": "Arturia MicroFreak Stellar",
+      "description": "Experimental hybrid synthesizer",
+      "image": "/workspace-img/microfreak.png",
+      "link": "https://www.arturia.com/products/hardware-synths/microfreak-stellar/overview"
+    },
     {
       "name": "Korg Kross 2 88 MB",
       "description": "88 keys synthesizer workstation for playing piano and other instruments",
