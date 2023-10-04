@@ -1,6 +1,6 @@
 ---
 title: "Melihat dan memotret Aurora Borealis di Estonia"
-date: 2023-11-04
+date: 2023-10-04
 images:
 - "/blog-img/aurora-2.jpg"
 categories:
