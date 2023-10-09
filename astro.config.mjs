@@ -7,7 +7,4 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://www.asepbagja.com",
   integrations: [mdx(), sitemap()],
-  experimental: {
-    assets: true
-  }
 });

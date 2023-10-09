@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 
 export interface Props {
-	title: string;
+  title: string;
   lang: string;
 }
 
@@ -20,13 +20,17 @@ const sortedArticles = [...articles].sort((a, b) => {
 // Get first 4 articles from sortedArticles array
 const latestArticles = sortedArticles.slice(0, 4).map((article) => {
   const category = article.data.categories[0].toLowerCase();
-  const replaceLang = article.slug.replace(`${lang}/`, '');
+  const replaceLang = article.slug.replace(`${lang}/`, "");
   return {
     ...article,
-    slug: lang === 'en' ? `/${category}/${replaceLang}` : `/${lang}/${category}/${replaceLang}`,
+    slug:
+      lang === "en"
+        ? `/${category}/${replaceLang}`
+        : `/${lang}/${category}/${replaceLang}`,
   };
 });
 ---
+
 <section class="music container pt-5">
   <div class="row">
     <div class="col-12">
@@ -34,15 +38,23 @@ const latestArticles = sortedArticles.slice(0, 4).map((article) => {
     </div>
   </div>
   <div class="row pt-5">
-    {latestArticles.map((article) => (
-      <article class="post col-sm-6 col-lg-3">
-        <div class="post-image">
-          <img src={article.data.images[0]} alt={article.data.title} class="img-fluid" />
-        </div>
-        <h3 class="mt-3"><a href={article.slug}>{article.data.title}</a></h3>
-        <p>{article.data.summary}</p>
-      </article>
-    ))}
+    {
+      latestArticles.map((article) => (
+        <article class="post col-sm-6 col-lg-3">
+          <div class="post-image">
+            <img
+              src={article.data.images[0]}
+              alt={article.data.title}
+              class="img-fluid"
+            />
+          </div>
+          <h3 class="mt-3">
+            <a href={article.slug}>{article.data.title}</a>
+          </h3>
+          <p>{article.data.summary}</p>
+        </article>
+      ))
+    }
   </div>
 </section>
 
@@ -55,7 +67,6 @@ const latestArticles = sortedArticles.slice(0, 4).map((article) => {
 
       // navigate to the link without opening a new tab
       window.location.href = link;
-
     });
   });
 </script>
@@ -77,5 +88,12 @@ const latestArticles = sortedArticles.slice(0, 4).map((article) => {
   article.post p {
     font-family: "Source Serif 4", serif;
     font-size: 1.2rem;
+  }
+
+  @media (min-width: 768px) {
+    .post-image {
+      height: 205px;
+      overflow: hidden;
+    }
   }
 </style>
