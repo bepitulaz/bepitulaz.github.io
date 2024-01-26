@@ -59,6 +59,12 @@
       "link": "https://www.apple.com/mainstage/"
     },
     {
+      "name": "Ableton Live Standard",
+      "description": "Digital Audio Workstation (DAW) for music production and performance",
+      "image": "/workspace-img/ableton-live.png",
+      "link": "https://www.ableton.com/"
+    },
+    {
       "name": "Arturia MiniFuse 4",
       "description": "Audio interface for connecting musical instruments to the computer",
       "image": "/workspace-img/minifuse4.png",
@@ -82,12 +88,6 @@
       "description": "88 keys synthesizer workstation for playing piano and other instruments",
       "image": "/workspace-img/kross2.png",
       "link": "https://www.korg.com/us/products/synthesizers/kross2_88mb/"
-    },
-    {
-      "name": "Korg volca sample",
-      "description": "Digital sample sequencer for playing drum and percussions without DAW",
-      "image": "/workspace-img/volca-sample.png",
-      "link": "https://www.korg.com/us/products/dj/volca_sample/"
     },
     {
       "name": "Korg volca modular",
@@ -118,6 +118,12 @@
       "description": "Semi-open studio headphone for mixing and listening to music",
       "image": "/workspace-img/sr850.png",
       "link": "https://samsontech.com/products/headphones/sr-series/sr850/"
+    },
+    {
+      "name": "Audio Technica ATH-M50xBT2",
+      "description": "Wireless over-ear headphone for mixing and listening to music",
+      "image": "/workspace-img/ath-m50xbt2.png",
+      "link": "https://www.audio-technica.com/en-eu/ath-m50xbt2"
     },
     {
       "name": "SAMSON C01",
