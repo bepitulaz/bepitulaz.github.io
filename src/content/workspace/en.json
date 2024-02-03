@@ -142,6 +142,12 @@
       "description": "A cheap unbrand electric kalimba for fun and experiment",
       "image": "/workspace-img/kalimba.png",
       "link": "N/A"
+    },
+    {
+      "name": "Yamaha MG10XU",
+      "description": "10 channel mixing console for mixing and recording music",
+      "image": "/workspace-img/yamaha-mg.jpg",
+      "link": "https://usa.yamaha.com/products/proaudio/mixers/mg_series_xu_model/index.html"
     }
   ],
   "video": [
