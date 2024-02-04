@@ -13,7 +13,7 @@ Saya baru saja selesai membaca buku yang berjudul Just Keep Buying karya Nick Ma
 
 <div class="text-center">
 <figure class="figure">
-<img src="/blog-img/just-keep-buying.jpg" class="figure-img img-fluid" alt="Just Keep Buying cover book" />
+<img src="https://www.asepbagja.com/blog-img/just-keep-buying.jpg" class="figure-img img-fluid" alt="Just Keep Buying cover book" />
 <figcaption class="figure-caption text-center">Sampul buku Just Keep Buying karya Nick Maggiulli</figcaption>
 </figure>
 </div>
