@@ -90,16 +90,10 @@
       "link": "https://www.korg.com/us/products/synthesizers/kross2_88mb/"
     },
     {
-      "name": "Korg volca modular",
-      "description": "Micro modular synthesizer for creating experimental sounds",
-      "image": "/workspace-img/volca-modular.png",
-      "link": "https://www.korg.com/us/products/dj/volca_modular/"
-    },
-    {
-      "name": "Zoom MS-70CDR",
-      "description": "Multi stomp chorus, delay, and reverb effect pedal",
-      "image": "/workspace-img/cdr70.png",
-      "link": "https://zoomcorp.com/en/jp/multi-effects/multistomp-pedals/ms-70cdr/"
+      "name": "Modular Synth Setup",
+      "description": "Nanas Sound custom build modular synthesizer with 84 HP case",
+      "image": "/workspace-img/modular-synth.jpg",
+      "link": "https://www.nanassound.com"
     },
     {
       "name": "Zoom H1n",
