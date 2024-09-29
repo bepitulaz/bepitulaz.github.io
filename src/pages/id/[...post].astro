@@ -50,78 +50,94 @@ const readingTime = Math.ceil(article.body.split(" ").length / 200);
     type: "website",
   }}
 >
-<Navbar />
+  <Navbar />
 
-<!-- Blog Article -->
-<div class="max-w-3xl px-4 mt-10 pt-10 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto">
-  <div class="max-w-2xl">
-    <!-- Avatar Media -->
-    <div class="flex justify-between items-center mb-6">
-      <div class="flex w-full sm:items-center gap-x-5 sm:gap-x-3">
-        <div class="shrink-0">
-          <img
-            class="size-12 rounded-full"
-            src={AuthorImg.src}
-            alt="Asep Bagja"
-          />
-        </div>
+  <!-- Blog Article -->
+  <div
+    class="max-w-3xl px-4 mt-10 pt-10 lg:pt-10 pb-12 sm:px-6 lg:px-8 mx-auto"
+  >
+    <div class="max-w-2xl">
+      <!-- Avatar Media -->
+      <div class="flex justify-between items-center mb-6">
+        <div class="flex w-full sm:items-center gap-x-5 sm:gap-x-3">
+          <div class="shrink-0">
+            <img
+              class="size-12 rounded-full"
+              src={AuthorImg.src}
+              alt="Asep Bagja"
+            />
+          </div>
 
-        <div class="grow">
-          <div class="flex justify-between items-center gap-x-2">
-            <div>
-              <!-- Tooltip -->
-              <div
-                class="hs-tooltip [--trigger:hover] [--placement:bottom] inline-block"
-              >
+          <div class="grow">
+            <div class="flex justify-between items-center gap-x-2">
+              <div>
+                <!-- Tooltip -->
                 <div
-                  class="sm:mb-1 block text-start"
+                  class="hs-tooltip [--trigger:hover] [--placement:bottom] inline-block"
                 >
-                  <span
-                    class="font-semibold text-gray-800 dark:text-neutral-200"
-                  >
-                    {language}
-                  </span>
+                  <div class="sm:mb-1 block text-start">
+                    <span
+                      class="font-semibold text-gray-800 dark:text-neutral-200"
+                    >
+                      {language}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <!-- End Tooltip -->
+                <!-- End Tooltip -->
 
-              <ul class="text-md text-gray-500 dark:text-neutral-500">
-                <li
-                  class="inline-block relative pe-6 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full dark:text-neutral-400 dark:before:bg-neutral-600"
-                >
-                  {formattedDate}
-                </li>
-                <li
-                  class="inline-block relative pe-6 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full dark:text-neutral-400 dark:before:bg-neutral-600"
-                >
-                  {isIndonesian ? `${readingTime} menit baca` : `${readingTime} min read`}
-                </li>
-              </ul>
+                <ul class="text-md text-gray-500 dark:text-neutral-500">
+                  <li
+                    class="inline-block relative pe-6 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full dark:text-neutral-400 dark:before:bg-neutral-600"
+                  >
+                    {formattedDate}
+                  </li>
+                  <li
+                    class="inline-block relative pe-6 last:pe-0 last-of-type:before:hidden before:absolute before:top-1/2 before:end-2 before:-translate-y-1/2 before:size-1 before:bg-gray-300 before:rounded-full dark:text-neutral-400 dark:before:bg-neutral-600"
+                  >
+                    {
+                      isIndonesian
+                        ? `${readingTime} menit baca`
+                        : `${readingTime} min read`
+                    }
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- End Avatar Media -->
+      <!-- End Avatar Media -->
 
-    <!-- Content -->
-    <div class="space-y-5 md:space-y-8">
-      <div class="space-y-3">
-        <h2 class="text-3xl font-bold md:text-3xl dark:text-white">
-          {article.data.title}
-        </h2>
-      </div>
+      <!-- Content -->
+      <div class="space-y-5 md:space-y-8">
+        <div class="space-y-3">
+          <h2 class="text-3xl font-bold md:text-3xl dark:text-white">
+            {article.data.title}
+          </h2>
+        </div>
 
-      <div class="blog text-xl font-sans">
-        <Content />
+        <div class="blog text-xl font-sans">
+          <Content />
+        </div>
+        <div>
+          {
+            article.data.categories.map((category) => (
+              <a
+                class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-200 dark:hover:bg-neutral-700 dark:focus:bg-neutral-700"
+                href="#"
+              >
+                {category}
+              </a>
+            ))
+          }
+        </div>
+        <div id="disqus_thread" class="mt-10"></div>
       </div>
-      <div id="disqus_thread" class="mt-10"></div>
+      <!-- End Content -->
     </div>
-    <!-- End Content -->
   </div>
-</div>
-<!-- End Blog Article -->
-<Footer />
+  <!-- End Blog Article -->
+  <Footer />
 </Layout>
 
 <script is:inline>
@@ -178,7 +194,8 @@ const readingTime = Math.ceil(article.body.split(" ").length / 200);
     margin-bottom: 1.5rem;
   }
 
-  div.blog .figure img, div.blog p img {
+  div.blog .figure img,
+  div.blog p img {
     width: 70%;
     display: block;
     margin: auto;
@@ -194,7 +211,7 @@ const readingTime = Math.ceil(article.body.split(" ").length / 200);
     border-left: 10px solid #ccc;
     margin: 1.5em 10px;
     padding: 0.5em 10px;
-    quotes: "\201C""\201D""\2018""\2019";
+    quotes: "\201C" "\201D" "\2018" "\2019";
   }
 
   div.blog blockquote:before {
