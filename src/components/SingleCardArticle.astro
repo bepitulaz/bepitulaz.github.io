@@ -1,0 +1,35 @@
+---
+export interface Props {
+	title: string;
+	href: string;
+	imageSrc: string;
+	imageAlt: string;
+	date: string;
+	categoryPath: string;
+	category: string;
+}
+
+const { title, href, imageSrc, imageAlt, date, categoryPath, category } =
+	Astro.props;
+
+const isIndonesia = href.startsWith("/id/");
+---
+
+<div class="group block rounded-xl overflow-hidden focus:outline-none">
+	<p class="text-sm text-gray-600 mb-2 dark:text-neutral-400">
+		{isIndonesia ? "🇮🇩" : "🇬🇧"} &bull; <a class="underline" href={categoryPath}>{category}</a>
+	</p>
+	<div class="aspect-w-16 aspect-h-9">
+		<img class="w-full object-cover rounded-xl" src={imageSrc} alt={imageAlt} />
+	</div>
+	<a class="group block rounded-xl focus:outline-none" href={href}>
+		<h3
+			class="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 group-focus:text-blue-600 dark:text-neutral-300 dark:group-hover:text-white dark:group-focus:text-white"
+		>
+			{title}
+		</h3>
+	</a>
+	<p class="mt-2 text-sm text-gray-600 dark:text-neutral-400">
+		{date}
+	</p>
+</div>
