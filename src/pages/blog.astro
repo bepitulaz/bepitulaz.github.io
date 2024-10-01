@@ -3,14 +3,12 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-import OneGridArticle from "../components/OneGridArticle.astro";
+import SingleCardArticle from "../components/SingleCardArticle.astro";
 
-const articles = await getCollection("blog", ({ id }) => {
-  return id.startsWith("en/");
-});
+const articles = await getCollection("blog");
 
 const sortedByLatestDate = articles.sort((a, b) => {
-  return new Date(b.data.date) - new Date(a.data.date);
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
 });
 
 const populateCategories = (articles) => {
@@ -48,59 +46,87 @@ const articlesMap = Object.fromEntries(articlesByCategory);
   }}
 >
   <Navbar />
-  <main class="container py-5">
-    <div class="row mb-5">
-      <div class="col-12">
-        <h2 class="section-title text-center fs-1">Blog</h2>
-        <p class="lead text-center">
-          My writing in the topic that I'm interested
-        </p>
+  <section
+    class="max-w-3xl px-4 mt-10 pt-10 lg:pt-14 sm:px-6 lg:px-8 mx-auto"
+  >
+    <!-- Title -->
+    <div class="mx-auto max-w-2xl mb-8 lg:mb-14 text-center">
+      <h2
+        class="text-5xl lg:text-4xl text-gray-800 font-bold dark:text-neutral-200"
+      >
+        Blog
+      </h2>
+      <p class="mt-3 text-xl text-gray-800 dark:text-neutral-200">
+        My writings on software, electronics, and personal development.<br />I write in English and Indonesian.
+      </p>
+    </div>
+  </section>
+
+  <div class="container py-5 mx-auto hidden md:block">
+    <div class="max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {
+        sortedByLatestDate.map((article) => {
+          const isEnglish = article.slug.startsWith("en/");
+          const englishPath = `/${article.data.categories?.[0].toLowerCase()}/${article.slug.replace("en/", "")}`;
+          const otherPath = `/${article.slug.split('/')[0]}/${article.data.categories?.[0].toLowerCase()}/${article.slug.split('/').slice(1).join('/')}`;
+          const link = isEnglish ? englishPath : otherPath;
+          
+          const englishCategoryPath = `/${article.data.categories?.[0].toLowerCase()}`;
+          const otherCategoryPath = `/${article.slug.split('/')[0]}/${article.data.categories?.[0].toLowerCase()}`;
+          const categoryPath = isEnglish ? englishCategoryPath : otherCategoryPath;
+
+          return (
+            <SingleCardArticle
+              title={article.data.title}
+              href={link}
+              imageSrc={article.data.images?.[0]}
+              imageAlt={`the thumbnail of ${article.data.title}`}
+              date={article.data.date.toLocaleDateString()}
+              categoryPath={categoryPath}
+              category={article.data.categories?.[0]}
+            /> 
+          );
+        })
+      }
       </div>
     </div>
-    {
-      categories.map((category: string) => (
-        <>
-          <section class="row">
-            <div class="col-12">
-              <div class="d-flex justify-content-between align-items-center">
-                <h1 class="border-bottom border-2 border-dark">{category}</h1>
-                {articlesMap[category].length > 4 && (
-                  <a
-                    href={`/${category.toLowerCase()}`}
-                    class="btn btn-outline-dark"
-                  >
-                    See all
-                  </a>
-                )}
-              </div>
-            </div>
-          </section>
-          <section class="row pt-4">
-            {articlesMap[category].map((article, index) => {
-              if (index > 3) return;
-              return (
-                <OneGridArticle
-                  title={article.data.title}
-                  excerpt={article.data.summary}
-                  imageSrc={article.data.images?.[0]}
-                  imageAlt={`the thumbnail of ${article.data.title}`}
-                  href={`/${article.data.categories?.[0].toLowerCase()}/${article.slug.replace(
-                    "en/",
-                    ""
-                  )}`}
-                />
-              );
-            })}
-          </section>
-        </>
-      ))
-    }
-  </main>
+  </div>
+
+  <div class="container pb-5 pt-14 mx-auto block md:hidden">
+    <ul class="space-y-10 px-4 sm:px-6">
+      {
+        sortedByLatestDate.map((article) => {
+          const isEnglish = article.slug.startsWith("en/");
+          const englishPath = `/${article.data.categories?.[0].toLowerCase()}/${article.slug.replace("en/", "")}`;
+          const otherPath = `/${article.slug.split('/')[0]}/${article.data.categories?.[0].toLowerCase()}/${article.slug.split('/').slice(1).join('/')}`;
+          const link = isEnglish ? englishPath : otherPath;
+          
+          const englishCategoryPath = `/${article.data.categories?.[0].toLowerCase()}`;
+          const otherCategoryPath = `/${article.slug.split('/')[0]}/${article.data.categories?.[0].toLowerCase()}`;
+          const categoryPath = isEnglish ? englishCategoryPath : otherCategoryPath;
+
+          return (
+            <li>
+              <p class="mb-2 text-lg text-gray-500 dark:text-neutral-400">
+                {article.data.date.toLocaleDateString()} &bull; <a class="text-gray-500 underline hover:text-gray-800 hover:decoration-2 focus:outline-none focus:decoration-2 dark:text-neutral-400 dark:hover:text-neutral-200" href={categoryPath}>{article.data.categories?.[0]}</a>
+              </p>
+              <h5 class="font-medium text-xl text-gray-800 dark:text-neutral-200">
+                {article.data.title}
+              </h5>
+              <p class="mt-1 text-lg text-gray-500 dark:text-neutral-400">
+                {article.data.summary}
+              </p>
+              <p class="mt-1">
+                <a class="text-md text-gray-500 underline hover:text-gray-800 hover:decoration-2 focus:outline-none focus:decoration-2 dark:text-neutral-200 dark:hover:text-neutral-400" href={link}>
+                  Continue reading
+                </a>
+              </p>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
   <Footer />
 </Layout>
-
-<style>
-  h1 {
-    width: fit-content;
-  }
-</style>

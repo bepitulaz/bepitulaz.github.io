@@ -7,9 +7,7 @@ import TwoGridsArticle from "../components/TwoGridsArticle.astro";
 import OneGridArticle from "../components/OneGridArticle.astro";
 
 export async function getStaticPaths() {
-  const articles = await getCollection("blog", ({ id }) => {
-    return id.startsWith("en/");
-  });
+  const articles = await getCollection("blog");
 
   const populateCategories = (articles) => {
     const categories = articles.reduce((acc, article) => {
@@ -21,24 +19,52 @@ export async function getStaticPaths() {
 
   const categories = populateCategories(articles);
 
-  return categories.map((category: string) => ({
-    params: {
-      category: category.toLowerCase(),
-    },
-    props: {
-      articles: articles
-        .filter((article) => article.data.categories.includes(category))
-        .sort((a, b) => {
-          const dateA = new Date(a.data.date);
-          const dateB = new Date(b.data.date);
-          return dateB - dateA;
-        }),
-      category,
-    },
-  }));
+  return categories.flatMap((category: string) => {
+    const categoryArticles = articles.filter((article) =>
+      article.data.categories.includes(category)
+    );
+
+    const englishArticles = categoryArticles.filter((article) =>
+      article.slug.startsWith("en/")
+    );
+    const otherArticles = categoryArticles.filter(
+      (article) => !article.slug.startsWith("en/")
+    );
+
+    const paths = [];
+
+    if (englishArticles.length > 0) {
+      paths.push({
+        params: { category: category.toLowerCase() },
+        props: {
+          articles: englishArticles.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()),
+          category,
+          locale: "en",
+        },
+      });
+    }
+
+    if (otherArticles.length > 0) {
+      const locales = [...new Set(otherArticles.map((article) => article.slug.split('/')[0]))];
+      locales.forEach((locale) => {
+        paths.push({
+          params: { category: `${locale}/${category.toLowerCase()}` },
+          props: {
+            articles: otherArticles
+              .filter((article) => article.slug.startsWith(`${locale}/`))
+              .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()),
+            category,
+            locale,
+          },
+        });
+      });
+    }
+
+    return paths;
+  });
 }
 
-const { articles, category } = Astro.props;
+const { articles, category, locale } = Astro.props;
 ---
 
 <Layout
@@ -46,7 +72,7 @@ const { articles, category } = Astro.props;
   description={`Asep Bagja's blog about ${category}`}
   openGraph={{
     title: `${category} | Asep Bagja`,
-    url: "https://www.asepbagja.com/" + category.toLowerCase(),
+    url: `https://www.asepbagja.com/${locale ? locale + '/' : ''}${category.toLowerCase()}`,
     image: "https://www.asepbagja.com" + articles[0].data.images?.[0],
     type: "website",
   }}
@@ -61,6 +87,10 @@ const { articles, category } = Astro.props;
     <section class="row pt-4">
       {
         articles.map((article, index) => {
+          const articlePath = locale === "en"
+            ? `/${article.data.categories?.[0].toLowerCase()}/${article.slug.replace("en/", "")}`
+            : `/${locale}/${article.data.categories?.[0].toLowerCase()}/${article.slug.split('/').slice(1).join('/')}`;
+
           if (index < 2) {
             return (
               <TwoGridsArticle
@@ -68,10 +98,7 @@ const { articles, category } = Astro.props;
                 excerpt={article.data.summary}
                 imageSrc={article.data.images?.[0]}
                 imageAlt={`the thumbnail of ${article.data.title}`}
-                href={`/${article.data.categories?.[0].toLowerCase()}/${article.slug.replace(
-                  "en/",
-                  ""
-                )}`}
+                href={articlePath}
               />
             );
           }
@@ -82,10 +109,7 @@ const { articles, category } = Astro.props;
               excerpt={article.data.summary}
               imageSrc={article.data.images?.[0]}
               imageAlt={`the thumbnail of ${article.data.title}`}
-              href={`/${article.data.categories?.[0].toLowerCase()}/${article.slug.replace(
-                "en/",
-                ""
-              )}`}
+              href={articlePath}
             />
           );
         })
