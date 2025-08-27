@@ -27,6 +27,10 @@ const blogCollection = defineCollection({
   }),
 });
 
+const aboutCollection = defineCollection({
+  type: "content",
+});
+
 const workspaceCollection = defineCollection({
   type: "data",
   schema: z.object({
@@ -68,5 +72,6 @@ const workspaceCollection = defineCollection({
 export const collections = {
   music: musicCollection,
   blog: blogCollection,
+  about: aboutCollection,
   workspace: workspaceCollection,
 };
