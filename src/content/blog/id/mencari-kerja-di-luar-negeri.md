@@ -63,4 +63,8 @@ Ini tips terakhir kalau kamu memang benar-benar ingin pindah negara, tetap gigih
 Tentu saja ada faktor-faktor lain yang menentukan kamu akan dipanggil wawancara atau tidak seperti pengalaman kerjamu, *skill set*, dan latar belakang pendidikan formal. Tapi jangan khawatir karena latar belakang pendidikan formal bisa tertutupi oleh pengalaman kerja. Yang paling penting coba saja dulu.
 
 Semoga cara-cara di atas bisa membantu kamu yang ingin mencari pekerjaan di luar negeri, apapun negara idamanmu.
+
+**_Pembaruan_**
+
+Saya menerbitkan artikel baru tentang [Pengalaman Terkena PHK di Estonia](https://www.asepbagja.com/id/pribadi/pengalaman-phk-estonia). Semoga bisa memberikan wawasan akan kemungkinan terkena PHK di luar negeri.
  
