@@ -179,9 +179,13 @@ const readingTime = Math.ceil(article.body.split(" ").length / 200);
   div.blog ol,
   div.blog ul {
     margin-left: 2.5rem;
-    font-family: "Source Serif 4", serif;
     font-size: 1.2rem;
     line-height: 2.25rem;
+    list-style-type: disc;
+  }
+
+  div.blog ol {
+    list-style-type: decimal;
   }
 
   div.blog .figure {
@@ -190,7 +194,8 @@ const readingTime = Math.ceil(article.body.split(" ").length / 200);
     margin-bottom: 1.5rem;
   }
 
-  div.blog .figure img, div.blog p img {
+  div.blog .figure img,
+  div.blog p img {
     width: 70%;
     display: block;
     margin: auto;
@@ -206,7 +211,7 @@ const readingTime = Math.ceil(article.body.split(" ").length / 200);
     border-left: 10px solid #ccc;
     margin: 1.5em 10px;
     padding: 0.5em 10px;
-    quotes: "\201C""\201D""\2018""\2019";
+    quotes: "\201C" "\201D" "\2018" "\2019";
   }
 
   div.blog blockquote:before {
@@ -226,6 +231,12 @@ const readingTime = Math.ceil(article.body.split(" ").length / 200);
 
   div.blog blockquote cite {
     font-size: 1rem;
+  }
+
+  div.blog figcaption {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
   }
 
   @media (max-width: 575.98px) {
