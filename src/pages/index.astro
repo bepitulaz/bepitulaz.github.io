@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
 import LatestWorks from "../components/LatestWorks.astro";
+import PatreonSupport from "../components/PatreonSupport.astro";
 import LatestBlog from "../components/LatestBlog.astro";
 import Footer from "../components/Footer.astro";
 ---
@@ -23,6 +24,9 @@ import Footer from "../components/Footer.astro";
   </div>
   <div class="bg-blue-200 dark:bg-blue-900">
     <LatestWorks />
+  </div>
+  <div class="bg-yellow-200 dark:bg-yellow-900">
+    <PatreonSupport />
   </div>
   <div class="container mx-auto">
     <LatestBlog title="Latest from the blog" />
