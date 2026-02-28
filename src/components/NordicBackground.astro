@@ -1,0 +1,385 @@
+---
+// NordicBackground.astro — Flying birds + Baltic waves canvas animation
+---
+
+<div class="nordic-bg-wrapper" aria-hidden="true">
+  <canvas id="nordic-bg-canvas"></canvas>
+</div>
+
+<style>
+  .nordic-bg-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  #nordic-bg-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>
+
+<script>
+  // ─── Simplex Noise (Stefan Gustavson, public domain) ───
+  // Vendored inline to avoid npm dependency
+  const F2 = 0.5 * (Math.sqrt(3) - 1);
+  const G2 = (3 - Math.sqrt(3)) / 6;
+  const grad3 = [
+    [1,1],[-1,1],[1,-1],[-1,-1],
+    [1,0],[-1,0],[0,1],[0,-1],
+  ];
+
+  function createNoise2D(random = Math.random) {
+    const perm = new Uint8Array(512);
+    const permMod8 = new Uint8Array(512);
+    const p = new Uint8Array(256);
+    for (let i = 0; i < 256; i++) p[i] = i;
+    for (let i = 255; i > 0; i--) {
+      const j = (random() * (i + 1)) | 0;
+      [p[i], p[j]] = [p[j], p[i]];
+    }
+    for (let i = 0; i < 512; i++) {
+      perm[i] = p[i & 255];
+      permMod8[i] = perm[i] & 7;
+    }
+
+    return function noise2D(x, y) {
+      const s = (x + y) * F2;
+      const i = Math.floor(x + s);
+      const j = Math.floor(y + s);
+      const t = (i + j) * G2;
+      const X0 = i - t;
+      const Y0 = j - t;
+      const x0 = x - X0;
+      const y0 = y - Y0;
+      const i1 = x0 > y0 ? 1 : 0;
+      const j1 = x0 > y0 ? 0 : 1;
+      const x1 = x0 - i1 + G2;
+      const y1 = y0 - j1 + G2;
+      const x2 = x0 - 1 + 2 * G2;
+      const y2 = y0 - 1 + 2 * G2;
+      const ii = i & 255;
+      const jj = j & 255;
+
+      let n0 = 0, n1 = 0, n2 = 0;
+      let t0 = 0.5 - x0 * x0 - y0 * y0;
+      if (t0 >= 0) {
+        const gi0 = permMod8[ii + perm[jj]];
+        t0 *= t0;
+        n0 = t0 * t0 * (grad3[gi0][0] * x0 + grad3[gi0][1] * y0);
+      }
+      let t1 = 0.5 - x1 * x1 - y1 * y1;
+      if (t1 >= 0) {
+        const gi1 = permMod8[ii + i1 + perm[jj + j1]];
+        t1 *= t1;
+        n1 = t1 * t1 * (grad3[gi1][0] * x1 + grad3[gi1][1] * y1);
+      }
+      let t2 = 0.5 - x2 * x2 - y2 * y2;
+      if (t2 >= 0) {
+        const gi2 = permMod8[ii + 1 + perm[jj + 1]];
+        t2 *= t2;
+        n2 = t2 * t2 * (grad3[gi2][0] * x2 + grad3[gi2][1] * y2);
+      }
+      return 70 * (n0 + n1 + n2);
+    };
+  }
+
+  // ─── Color Palettes ───
+  const PALETTES = {
+    light: {
+      bird: 'rgba(53,109,103,0.30)',       // sage-600
+      waves: [
+        'rgba(214,234,232,0.18)',           // sage-100
+        'rgba(170,204,202,0.14)',           // sage-200
+        'rgba(125,181,176,0.10)',           // sage-300
+      ],
+      horizon: 'rgba(214,234,232,0.10)',   // sage-100
+    },
+    dark: {
+      bird: 'rgba(125,181,176,0.35)',      // sage-300
+      waves: [
+        'rgba(26,56,53,0.22)',             // sage-800
+        'rgba(38,82,77,0.18)',             // sage-700
+        'rgba(53,109,103,0.12)',           // sage-600
+      ],
+      horizon: 'rgba(26,56,53,0.14)',     // sage-800
+    },
+  };
+
+  // ─── Tier Configuration ───
+  function getTier(width) {
+    if (width >= 1024) return { birds: 7, waves: 3, fps: 30, dprCap: 2 };
+    if (width >= 640)  return { birds: 5, waves: 2, fps: 30, dprCap: 2 };
+    return { birds: 3, waves: 2, fps: 24, dprCap: 1 };
+  }
+
+  // ─── NordicAnimation Class ───
+  class NordicAnimation {
+    constructor(canvas) {
+      this.canvas = canvas;
+      this.ctx = canvas.getContext('2d');
+      this.noise = createNoise2D();
+      this.width = 0;
+      this.height = 0;
+      this.dpr = 1;
+      this.tier = getTier(window.innerWidth);
+      this.palette = this.detectDarkMode() ? PALETTES.dark : PALETTES.light;
+      this.scrollOpacity = 1;
+      this.heroMarker = null;
+      this.running = false;
+      this.lastFrame = 0;
+      this.animId = null;
+      this.birds = [];
+
+      this.resize();
+      this.initBirds();
+    }
+
+    detectDarkMode() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+
+    resize() {
+      this.tier = getTier(window.innerWidth);
+      this.dpr = Math.min(window.devicePixelRatio || 1, this.tier.dprCap);
+      this.width = window.innerWidth;
+      this.height = window.innerHeight;
+      this.canvas.width = this.width * this.dpr;
+      this.canvas.height = this.height * this.dpr;
+      this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+      this.initBirds();
+    }
+
+    updateScrollFade() {
+      if (!this.heroMarker) {
+        this.heroMarker = document.getElementById('nordic-bg-hero-marker');
+      }
+      if (this.heroMarker) {
+        const rect = this.heroMarker.getBoundingClientRect();
+        const fadeStart = this.height * 0.3;
+        const fadeEnd = -rect.height * 0.5;
+        const bottom = rect.bottom;
+        if (bottom <= fadeEnd) {
+          this.scrollOpacity = 0;
+        } else if (bottom >= fadeStart) {
+          this.scrollOpacity = 1;
+        } else {
+          this.scrollOpacity = (bottom - fadeEnd) / (fadeStart - fadeEnd);
+        }
+      }
+    }
+
+    initBirds() {
+      const count = this.tier.birds;
+      this.birds = [];
+      for (let i = 0; i < count; i++) {
+        this.birds.push({
+          x: Math.random() * this.width,
+          yBase: this.height * (0.08 + Math.random() * 0.47),
+          y: 0,
+          speed: 18 + Math.random() * 14,
+          size: 12 + Math.random() * 18,
+          flapPhase: Math.random() * Math.PI * 2,
+        });
+      }
+    }
+
+    drawBirds(t) {
+      const { ctx, width, height, noise, palette, birds } = this;
+      const interval = 1000 / this.tier.fps;
+      const dt = interval / 1000;
+
+      ctx.strokeStyle = palette.bird;
+      ctx.lineWidth = 1.5;
+      ctx.lineCap = 'round';
+
+      for (const bird of birds) {
+        // Update position — drift right-to-left
+        bird.x -= bird.speed * dt;
+        if (bird.x < -40) {
+          bird.x = width + 20 + Math.random() * 40;
+          bird.yBase = height * (0.08 + Math.random() * 0.47);
+        }
+
+        // Gentle vertical bob + noise variation
+        const bob = Math.sin(t * 0.5 + bird.flapPhase) * 6;
+        const noiseY = noise(bird.x * 0.003 + bird.flapPhase, t * 0.2) * 8;
+        bird.y = bird.yBase + bob + noiseY;
+
+        // Wing flap angle — subtle oscillation
+        const flapAngle = Math.sin(t * 3 + bird.flapPhase) * 0.3 + 0.25;
+        const halfSpan = bird.size / 2;
+
+        // Draw seagull silhouette — two curved strokes forming a "V"
+        ctx.beginPath();
+        // Left wing
+        ctx.moveTo(bird.x, bird.y);
+        ctx.quadraticCurveTo(
+          bird.x - halfSpan * 0.5, bird.y - halfSpan * flapAngle,
+          bird.x - halfSpan, bird.y - halfSpan * flapAngle * 0.4
+        );
+        ctx.stroke();
+
+        // Right wing
+        ctx.beginPath();
+        ctx.moveTo(bird.x, bird.y);
+        ctx.quadraticCurveTo(
+          bird.x + halfSpan * 0.5, bird.y - halfSpan * flapAngle,
+          bird.x + halfSpan, bird.y - halfSpan * flapAngle * 0.4
+        );
+        ctx.stroke();
+      }
+    }
+
+    drawWaves(t) {
+      const { ctx, width, height, noise, tier, palette } = this;
+      const waveCount = tier.waves;
+      const waveZone = height * 0.30;
+      const waveBase = height - waveZone;
+
+      for (let w = 0; w < waveCount; w++) {
+        const waveY = waveBase + (w / waveCount) * waveZone * 0.6;
+        ctx.beginPath();
+        ctx.moveTo(0, height);
+
+        for (let x = 0; x <= width; x += 4) {
+          const frac = x / width;
+          const sine = Math.sin(frac * Math.PI * 3 + t * (0.8 + w * 0.3) + w * 2);
+          const noiseVal = noise(frac * 3 + w * 5.3, t * 0.4 + w * 2.1);
+          const y = waveY + sine * (12 + w * 5) + noiseVal * 15;
+          ctx.lineTo(x, y);
+        }
+
+        ctx.lineTo(width, height);
+        ctx.closePath();
+        ctx.fillStyle = palette.waves[w % palette.waves.length];
+        ctx.fill();
+      }
+    }
+
+    drawHorizon(t) {
+      const { ctx, width, height, palette } = this;
+      const horizonY = height * 0.68;
+      const bandHeight = 40;
+      const grad = ctx.createLinearGradient(0, horizonY - bandHeight / 2, 0, horizonY + bandHeight / 2);
+      grad.addColorStop(0, 'rgba(0,0,0,0)');
+      grad.addColorStop(0.5, palette.horizon);
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, horizonY - bandHeight / 2, width, bandHeight);
+    }
+
+    render(t) {
+      const { ctx, width, height } = this;
+      ctx.clearRect(0, 0, width, height);
+      ctx.globalAlpha = this.scrollOpacity;
+      this.drawBirds(t);
+      this.drawHorizon(t);
+      this.drawWaves(t);
+      ctx.globalAlpha = 1;
+    }
+
+    animate = (timestamp) => {
+      if (!this.running) return;
+      const interval = 1000 / this.tier.fps;
+      const delta = timestamp - this.lastFrame;
+
+      if (delta >= interval) {
+        this.lastFrame = timestamp - (delta % interval);
+        this.updateScrollFade();
+        if (this.scrollOpacity > 0.01) {
+          const t = timestamp / 1000;
+          this.render(t);
+        }
+      }
+
+      this.animId = requestAnimationFrame(this.animate);
+    };
+
+    start() {
+      this.running = true;
+      this.lastFrame = 0;
+      this.animId = requestAnimationFrame(this.animate);
+    }
+
+    stop() {
+      this.running = false;
+      if (this.animId) {
+        cancelAnimationFrame(this.animId);
+        this.animId = null;
+      }
+    }
+
+    renderStaticFrame() {
+      this.updateScrollFade();
+      this.render(0);
+    }
+  }
+
+  // ─── Initialization ───
+  function init() {
+    const canvas = document.getElementById('nordic-bg-canvas');
+    if (!canvas) return;
+
+    // forced-colors mode: hide canvas entirely
+    if (window.matchMedia('(forced-colors: active)').matches) {
+      canvas.style.display = 'none';
+      return;
+    }
+
+    const anim = new NordicAnimation(canvas);
+
+    // prefers-reduced-motion: render single static frame
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reducedMotion.matches) {
+      anim.renderStaticFrame();
+      return;
+    }
+
+    anim.start();
+
+    // Dark mode changes
+    const darkMQ = window.matchMedia('(prefers-color-scheme: dark)');
+    darkMQ.addEventListener('change', (e) => {
+      anim.palette = e.matches ? PALETTES.dark : PALETTES.light;
+    });
+
+    // Reduced motion changes (user toggles mid-session)
+    reducedMotion.addEventListener('change', (e) => {
+      if (e.matches) {
+        anim.stop();
+        anim.renderStaticFrame();
+      } else {
+        anim.start();
+      }
+    });
+
+    // Pause when tab hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        anim.stop();
+      } else if (!reducedMotion.matches) {
+        anim.start();
+      }
+    });
+
+    // Debounced resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        anim.resize();
+        if (!anim.running) anim.renderStaticFrame();
+      }, 150);
+    });
+  }
+
+  // Run on page load (works with Astro's view transitions too)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+  document.addEventListener('astro:after-swap', init);
+</script>

@@ -111,12 +111,12 @@ const readingTime = Math.ceil(article.body.split(" ").length / 200);
       <!-- Content -->
       <div class="space-y-5 md:space-y-8">
         <div class="space-y-3">
-          <h2 class="text-3xl font-bold md:text-3xl dark:text-white">
+          <h2 class="text-3xl font-bold md:text-3xl font-manrope text-gray-800 dark:text-white">
             {article.data.title}
           </h2>
         </div>
 
-        <div class="blog text-xl font-sans">
+        <div class="blog text-xl text-gray-700 dark:text-neutral-300">
           <Content />
         </div>
         <div>
@@ -131,7 +131,6 @@ const readingTime = Math.ceil(article.body.split(" ").length / 200);
             ))
           }
         </div>
-        <div id="disqus_thread" class="mt-10"></div>
       </div>
       <!-- End Content -->
     </div>
@@ -140,34 +139,16 @@ const readingTime = Math.ceil(article.body.split(" ").length / 200);
   <Footer />
 </Layout>
 
-<script is:inline>
-  var disqus_config = function () {
-    this.page.url = window.location.href; // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier =
-      window.location.href.split("/").at(-1) === ""
-        ? window.location.href.split("/").at(-2)
-        : window.location.href.split("/").at(-1); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-  };
-
-  (function () {
-    // DON'T EDIT BELOW THIS LINE
-    var d = document,
-      s = d.createElement("script");
-    s.src = "https://asepnew.disqus.com/embed.js";
-    s.setAttribute("data-timestamp", +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
 
 <style is:inline>
   div.blog a {
-    color: #2563eb;
+    color: #356d67;
     text-decoration: underline;
     font-weight: 600;
   }
 
   div.blog a:hover {
-    color: #2563eb;
+    color: #26524d;
   }
 
   div.blog p {
@@ -175,10 +156,19 @@ const readingTime = Math.ceil(article.body.split(" ").length / 200);
     margin-bottom: 1.5rem;
   }
 
-  div.blog h3 {
-    font-weight: 600;
-    font-size: 1.5rem;
+  div.blog h2,
+  div.blog h3,
+  div.blog h4 {
+    font-family: "Manrope", sans-serif;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: #2C2C2C;
   }
+
+  div.blog h2 { font-size: 1.75rem; }
+  div.blog h3 { font-size: 1.5rem; }
+  div.blog h4 { font-size: 1.25rem; }
 
   div.blog ol,
   div.blog ul {
@@ -203,54 +193,56 @@ const readingTime = Math.ceil(article.body.split(" ").length / 200);
     width: 70%;
     display: block;
     margin: auto;
-  }
-
-  div.blog .category-text a {
-    color: var(--bs-light);
-    text-decoration: none;
+    border-radius: 0.75rem;
   }
 
   div.blog blockquote {
-    background: #f9f9f9;
-    border-left: 10px solid #ccc;
-    margin: 1.5em 10px;
-    padding: 0.5em 10px;
-    quotes: "\201C" "\201D" "\2018" "\2019";
-  }
-
-  div.blog blockquote:before {
-    color: #ccc;
-    content: open-quote;
-    font-size: 4em;
-    line-height: 0.1em;
-    margin-right: 0.25em;
-    vertical-align: -0.4em;
+    background: rgba(70, 136, 128, 0.08);
+    border-left: 4px solid #5d9e98;
+    margin: 1.5em 0;
+    padding: 0.75em 1.25em;
+    border-radius: 0 0.5rem 0.5rem 0;
   }
 
   div.blog blockquote p {
     display: inline;
-    font-size: 1.5rem;
-    line-height: 2.25rem;
+    font-size: 1.25rem;
+    line-height: 2rem;
+    color: #26524d;
   }
 
   div.blog blockquote cite {
     font-size: 1rem;
+    color: #6b7280;
   }
 
   div.blog figcaption {
     font-size: 0.875rem;
     color: #6b7280;
     margin-top: 0.5rem;
+    text-align: center;
   }
 
-  @media (max-width: 575.98px) {
-    div.blog .figure img {
-      width: 100%;
+  @media (prefers-color-scheme: dark) {
+    div.blog h2,
+    div.blog h3,
+    div.blog h4 {
+      color: #e5e5e5;
+    }
+
+    div.blog blockquote {
+      background: rgba(70, 136, 128, 0.12);
+      border-left-color: #468880;
+    }
+
+    div.blog blockquote p {
+      color: #7db5b0;
     }
   }
 
   @media (max-width: 767.98px) {
-    div.blog .figure img {
+    div.blog .figure img,
+    div.blog p img {
       width: 100%;
     }
   }

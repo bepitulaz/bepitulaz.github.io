@@ -1,27 +1,22 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/id">Asep Bagja</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse justify-content-end navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="/id/diskografi">Diskografi</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/id/blog">Blog</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-            <i class="bi bi-flag"></i>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-lg-end">
-            <li><a class="dropdown-item" href="/">English</a></li>
-            <li><a class="dropdown-item" href="/id">Bahasa Indonesia</a></li>
-          </ul>
-        </li>
-      </ul>
+<header class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-base md:my-5">
+  <nav class="glass-ice mt-4 max-w-2xl w-full rounded-[2rem] mx-2 py-2.5 md:flex md:items-center md:justify-between md:py-0 md:px-4 md:mx-auto">
+    <div class="px-4 md:px-0 flex justify-between items-center">
+      <div>
+        <a class="flex-none rounded-md text-lg inline-block focus:outline-none focus:opacity-80 text-charcoal dark:text-neutral-300 font-manrope font-bold tracking-tight" href="/" aria-label="home">asep.bagja</a>
+      </div>
+      <div class="md:hidden">
+        <button type="button" class="hs-collapse-toggle flex justify-center items-center size-6 border border-sage-200 text-charcoal/60 rounded-full hover:bg-sage-50 focus:outline-none focus:bg-sage-50 dark:border-sage-700 dark:text-neutral-400 dark:hover:bg-sage-800 dark:focus:bg-sage-800" id="hs-navbar-id-floating-collapse" aria-expanded="false" aria-controls="hs-navbar-id-floating" aria-label="Toggle navigation" data-hs-collapse="#hs-navbar-id-floating">
+          <svg class="hs-collapse-open:hidden shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
+          <svg class="hs-collapse-open:block hidden shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
     </div>
-  </div>
-</nav>
+
+    <div id="hs-navbar-id-floating" class="hidden hs-collapse overflow-hidden transition-all duration-300 basis-full grow md:block" aria-labelledby="hs-navbar-id-floating-collapse">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-end gap-2 md:gap-3 mt-3 md:mt-0 py-2 md:py-0 md:ps-7">
+        <a class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-charcoal/60 hover:text-sage-600 focus:outline-none dark:text-neutral-400 dark:hover:text-sage-300 transition-colors" href="https://asepbagja.bandcamp.com" target="_blank" rel="noopener noreferrer">diskografi</a>
+        <a class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-charcoal/60 hover:text-sage-600 focus:outline-none dark:text-neutral-400 dark:hover:text-sage-300 transition-colors" href="/id/blog">blog</a>
+      </div>
+    </div>
+  </nav>
+</header>

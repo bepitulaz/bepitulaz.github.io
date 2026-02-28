@@ -1,1 +1,91 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+/* ── Crystal Ice / Liquid Glass tokens ── */
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-border-bottom: rgba(170, 190, 188, 0.35);
+  --glass-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.04);
+  --glass-highlight: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  );
+
+  /* Card hover variants */
+  --glass-card-bg-hover: rgba(255, 255, 255, 0.6);
+  --glass-card-shadow-hover:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --glass-bg: rgba(30, 41, 59, 0.4);
+    --glass-border: rgba(148, 163, 184, 0.2);
+    --glass-border-bottom: rgba(30, 41, 59, 0.5);
+    --glass-shadow:
+      0 4px 24px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(148, 163, 184, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    --glass-highlight: linear-gradient(
+      180deg,
+      rgba(148, 163, 184, 0.15) 0%,
+      rgba(148, 163, 184, 0.03) 50%,
+      transparent 100%
+    );
+
+    --glass-card-bg-hover: rgba(30, 41, 59, 0.55);
+    --glass-card-shadow-hover:
+      0 8px 32px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(148, 163, 184, 0.25),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* ── Shared glass base ── */
+.glass-ice,
+.glass-ice-card {
+  position: relative;
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(1.3);
+  -webkit-backdrop-filter: blur(16px) saturate(1.3);
+  border: 1px solid var(--glass-border);
+  border-bottom-color: var(--glass-border-bottom);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Highlight sheen pseudo-element */
+.glass-ice::before,
+.glass-ice-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-highlight);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Keep children above the highlight */
+.glass-ice > *,
+.glass-ice-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Card-specific hover transition ── */
+.glass-ice-card {
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.glass-ice-card:hover {
+  background-color: var(--glass-card-bg-hover);
+  box-shadow: var(--glass-card-shadow-hover);
+  transform: translateY(-1px);
+}
