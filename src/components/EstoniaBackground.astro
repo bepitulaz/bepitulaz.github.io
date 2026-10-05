@@ -1,0 +1,251 @@
+---
+// EstoniaBackground.astro — Cinematic Three.js Estonia nature background:
+// aurora over the Baltic, pine headlands, seasonal atmosphere. Includes a
+// visitor-facing season switcher (auto / winter / spring / summer / autumn).
+---
+
+<div class="estonia-bg-wrapper" id="estonia-bg" aria-hidden="true">
+  <div class="estonia-bg-fallback"></div>
+  <canvas id="estonia-bg-canvas"></canvas>
+  <div class="estonia-bg-scrim"></div>
+</div>
+
+<div
+  class="estonia-season-switcher glass-ice"
+  id="estonia-season-switcher"
+  role="group"
+  aria-label="Choose background season"
+  hidden
+>
+  <button type="button" data-season="auto" aria-pressed="false" title="Auto — follows your season">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M12 3a9 9 0 0 1 0 18Z" fill="currentColor" stroke="none"></path>
+    </svg>
+    <span class="sr-only">Auto season</span>
+  </button>
+  <button type="button" data-season="winter" aria-pressed="false" title="Winter — Talv">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 2v20M2 12h20M4.9 4.9l14.2 14.2M19.1 4.9 4.9 19.1"></path>
+    </svg>
+    <span class="sr-only">Winter</span>
+  </button>
+  <button type="button" data-season="spring" aria-pressed="false" title="Spring — Kevad">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 22v-8"></path>
+      <path d="M12 14c0-4.2-3.2-6.4-7.5-6.4 0 4.2 3.2 6.4 7.5 6.4Z"></path>
+      <path d="M12 10c0-3 2-4.8 5.5-4.8 0 3-2 4.8-5.5 4.8Z"></path>
+    </svg>
+    <span class="sr-only">Spring</span>
+  </button>
+  <button type="button" data-season="summer" aria-pressed="false" title="Summer — Suvi (midnight sun)">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+    </svg>
+    <span class="sr-only">Summer</span>
+  </button>
+  <button type="button" data-season="autumn" aria-pressed="false" title="Autumn — Sügis">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+    </svg>
+    <span class="sr-only">Autumn</span>
+  </button>
+</div>
+
+<style>
+  .estonia-bg-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  #estonia-bg-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  /* Non-WebGL fallback: quiet sage/slate gradient */
+  .estonia-bg-fallback {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, #dcebe8 0%, #c3dcd8 60%, #adcfc9 100%);
+  }
+  @media (prefers-color-scheme: dark) {
+    .estonia-bg-fallback {
+      background: linear-gradient(180deg, #0a1626 0%, #0e1e30 55%, #102538 100%);
+    }
+  }
+  /* Readability scrim behind hero text (charcoal text in light mode) */
+  .estonia-bg-scrim {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 90% 65% at 50% 36%,
+      rgba(255, 255, 255, 0.88),
+      rgba(255, 255, 255, 0.45) 50%,
+      rgba(255, 255, 255, 0.04) 80%,
+      transparent 100%
+    );
+  }
+  @media (prefers-color-scheme: dark) {
+    .estonia-bg-scrim {
+      background: radial-gradient(
+        ellipse 92% 68% at 50% 36%,
+        rgba(2, 6, 16, 0.8),
+        rgba(2, 6, 16, 0.45) 52%,
+        rgba(2, 6, 16, 0.03) 80%,
+        transparent 100%
+      );
+    }
+  }
+
+  .estonia-season-switcher {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 40;
+    display: flex;
+    gap: 0.125rem;
+    padding: 0.3rem;
+    border-radius: 9999px;
+  }
+  .estonia-season-switcher button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    color: rgb(63 105 98); /* sage-700 */
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .estonia-season-switcher button:hover {
+    background-color: rgba(255, 255, 255, 0.55);
+  }
+  .estonia-season-switcher button[aria-pressed="true"] {
+    background-color: rgba(255, 255, 255, 0.75);
+    color: rgb(31 72 64); /* sage-800 */
+  }
+  @media (prefers-color-scheme: dark) {
+    .estonia-season-switcher button {
+      color: rgb(125 181 176); /* sage-300 */
+    }
+    .estonia-season-switcher button:hover {
+      background-color: rgba(148, 163, 184, 0.18);
+    }
+    .estonia-season-switcher button[aria-pressed="true"] {
+      background-color: rgba(148, 163, 184, 0.3);
+      color: rgb(170 204 202); /* sage-200 */
+    }
+  }
+  .estonia-season-switcher button:focus-visible {
+    outline: 2px solid rgb(53 109 103);
+    outline-offset: 2px;
+  }
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+</style>
+
+<script>
+  import { EstoniaScene, type SeasonKey } from "../scripts/estonia-scene";
+
+  type Selection = SeasonKey | "auto";
+  const STORAGE_KEY = "estonia-season";
+  const SELECTIONS: Selection[] = ["auto", "winter", "spring", "summer", "autumn"];
+
+  function resolveAuto(): SeasonKey {
+    const m = new Date().getMonth(); // 0–11
+    if (m === 11 || m <= 1) return "winter";
+    if (m <= 4) return "spring";
+    if (m <= 7) return "summer";
+    return "autumn";
+  }
+
+  function init() {
+    const canvas = document.getElementById("estonia-bg-canvas") as HTMLCanvasElement | null;
+    const wrapper = document.getElementById("estonia-bg");
+    const switcher = document.getElementById("estonia-season-switcher");
+    if (!canvas || !wrapper || !switcher) return;
+
+    // Idempotent re-init guard (astro:after-swap parity)
+    if ((canvas as HTMLCanvasElement & { __estoniaScene?: unknown }).__estoniaScene) return;
+
+    // forced-colors mode: no canvas art
+    if (window.matchMedia("(forced-colors: active)").matches) {
+      wrapper.style.display = "none";
+      return;
+    }
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const scene = EstoniaScene.create(canvas, wrapper, reducedMotion.matches);
+    if (!scene) {
+      // No WebGL: keep the CSS gradient, no switcher
+      canvas.style.display = "none";
+      return;
+    }
+    (canvas as HTMLCanvasElement & { __estoniaScene?: unknown }).__estoniaScene = scene;
+
+    // Restore visitor's choice; default follows their current season
+    const stored = localStorage.getItem(STORAGE_KEY);
+    const selection: Selection =
+      stored && SELECTIONS.includes(stored as Selection) ? (stored as Selection) : "auto";
+    scene.setSeason(selection === "auto" ? resolveAuto() : selection, true);
+    if (!reducedMotion.matches) scene.start();
+
+    const buttons = Array.from(switcher.querySelectorAll<HTMLButtonElement>("button[data-season]"));
+    const setActive = (sel: Selection) => {
+      for (const b of buttons) b.setAttribute("aria-pressed", String(b.dataset.season === sel));
+    };
+    setActive(selection);
+    switcher.removeAttribute("hidden");
+
+    switcher.addEventListener("click", (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>("button[data-season]");
+      if (!btn) return;
+      const sel = btn.dataset.season as Selection;
+      localStorage.setItem(STORAGE_KEY, sel);
+      setActive(sel);
+      scene.setSeason(sel === "auto" ? resolveAuto() : sel);
+    });
+
+    reducedMotion.addEventListener("change", (e) => {
+      if (e.matches) {
+        scene.stop();
+        scene.renderStatic();
+      } else {
+        scene.start();
+      }
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) scene.stop();
+      else if (!reducedMotion.matches) scene.start();
+    });
+
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => scene.resize(), 150);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+  document.addEventListener("astro:after-swap", init);
+</script>
