@@ -392,6 +392,8 @@ export class EstoniaScene {
   private reducedMotion: boolean;
 
   private heroMarker: HTMLElement | null = null;
+  private switcherEl: HTMLElement | null = null;
+  private footerIcons: HTMLAnchorElement[] | null = null;
   private wrapper: HTMLElement;
 
   private onFrameCallback: ((t: number) => void) | null = null;
@@ -877,21 +879,52 @@ export class EstoniaScene {
     this.camera.lookAt(0, this.lookAtY, -100);
   }
 
-  private updateScrollFade() {
+  // Public: also called by the component on scroll when reduced motion
+  // freezes the render loop.
+  syncScrollFade() {
     if (!this.heroMarker) {
       this.heroMarker = document.getElementById("estonia-bg-hero-marker");
+    }
+    if (!this.switcherEl) {
+      this.switcherEl = document.getElementById("estonia-season-switcher");
     }
     if (!this.heroMarker) return;
     const rect = this.heroMarker.getBoundingClientRect();
     const vh = window.innerHeight;
     const fadeStart = vh * 0.3;
-    const fadeEnd = -rect.height * 0.5;
+    const fadeEnd = vh * 0.15; // fully gone while the hero tail is 15% vh above the fold
     let opacity = 1;
     if (rect.bottom <= fadeEnd) opacity = 0;
     else if (rect.bottom < fadeStart) {
       opacity = (rect.bottom - fadeEnd) / (fadeStart - fadeEnd);
     }
     this.wrapper.style.opacity = String(opacity);
+    // The switcher controls the background — hide it once the background
+    // is gone, or the moment it would sit on the footer's social icons.
+    if (this.switcherEl) {
+      if (opacity > 0.05 && this.overlapsFooterIcons(this.switcherEl)) opacity = 0;
+      this.switcherEl.style.opacity = String(opacity);
+      this.switcherEl.style.visibility = opacity < 0.05 ? "hidden" : "visible";
+    }
+  }
+
+  private overlapsFooterIcons(switcherEl: HTMLElement): boolean {
+    if (!this.footerIcons) {
+      this.footerIcons = Array.from(
+        document.querySelectorAll<HTMLAnchorElement>("footer a svg"),
+      )
+        .map((svg) => svg.parentElement)
+        .filter((el): el is HTMLAnchorElement => el !== null);
+    }
+    const sw = switcherEl.getBoundingClientRect();
+    for (const icon of this.footerIcons) {
+      const r = icon.getBoundingClientRect();
+      if (r.bottom < sw.top || r.top > sw.bottom || r.right < sw.left || r.left > sw.right) {
+        continue; // no intersection
+      }
+      return true;
+    }
+    return false;
   }
 
   private renderFrame(now: number) {
@@ -902,7 +935,7 @@ export class EstoniaScene {
     this.waterUniforms.uTime.value = t;
     this.particleUniforms.uTime.value = t;
     if (this.onFrameCallback) this.onFrameCallback(t);
-    this.updateScrollFade();
+    this.syncScrollFade();
     this.renderer.render(this.scene, this.camera);
   }
 
