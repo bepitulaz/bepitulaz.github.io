@@ -8,20 +8,39 @@ const projectMailto =
 
 const services = [
     {
-        title: "Bounded AI integrations & agent workflows",
-        scope: "Identity/KYC routing, document handling, deterministic LLM pipelines, local ONNX inference, and agent-ready APIs.",
-        discipline:
-            "GDPR processor agreements, EU data residency, and zero-training terms settled before the first line of code.",
+        title: "AI features in your product",
+        details: [
+            {
+                label: "For example",
+                text: "Routing KYC checks between providers, pulling data out of documents, LLM steps with predictable output, models running on your own servers with ONNX, and APIs that AI agents can call.",
+            },
+            {
+                label: "Before I start",
+                text: "I settle the GDPR processor agreement, EU data residency, and no-training terms with every AI provider before writing any code.",
+            },
+        ],
     },
     {
-        title: "Focused digital products, web & native",
-        scope: "End-to-end web applications (Elixir/Phoenix LiveView, TypeScript, Python), macOS/iOS apps (Swift/SwiftUI), and internal tools shipped in days or weeks rather than quarters.",
-        discipline:
-            "Working code, clean tests, and deployment notes handed over without lock-in.",
+        title: "Web, iOS, and macOS apps",
+        details: [
+            {
+                label: "For example",
+                text: "Web apps in Elixir/Phoenix LiveView, TypeScript, or Python, Mac and iPhone apps in SwiftUI, and internal tools. Small builds take days, larger ones a few weeks.",
+            },
+            {
+                label: "What you get",
+                text: "Working code with tests and deployment notes. It runs on your infrastructure, and your team can change it without me.",
+            },
+        ],
     },
     {
-        title: "Hardware–software & CAD automation bridges",
-        scope: "Programmatic CAD pipelines (build123d / FreeCAD), embedded Linux/Nerves (Raspberry Pi, ESP32), WebGPU/Three.js 3D viewers, and physical-digital product loops.",
+        title: "Hardware, firmware, and CAD automation",
+        details: [
+            {
+                label: "For example",
+                text: "CAD models generated from code with build123d and FreeCAD, embedded Linux with Nerves on Raspberry Pi, ESP32 firmware, and 3D viewers in the browser with WebGPU and Three.js.",
+            },
+        ],
     },
 ];
 
@@ -31,7 +50,7 @@ const linkClass =
 
 <Layout
     title="Work with me | Asep Bagja"
-    description="Independent product & AI engineering from Tallinn, Estonia. Bounded AI integrations, Elixir/Python/Swift product builds, and hardware–software systems, contracted and invoiced via Chloe & Matt OÜ."
+    description="Hire Asep Bagja, a product and AI engineer in Tallinn, Estonia, for AI features, web and Apple apps, and hardware projects. Contracted and invoiced through Chloe & Matt OÜ."
     openGraph={{
         title: "Work with me | Asep Bagja",
         url: "https://www.asepbagja.com/work",
@@ -47,7 +66,7 @@ const linkClass =
             <h1
                 class="font-manrope font-bold text-4xl sm:text-5xl tracking-tight leading-[1.08] text-charcoal dark:text-white text-balance"
             >
-                One senior engineer on the call, the architecture, and the code.
+                The engineer you talk to is the one who writes the code.
             </h1>
             <p
                 class="mt-5 flex items-center gap-1.5 text-sm font-medium text-charcoal/70 dark:text-neutral-400"
@@ -55,16 +74,15 @@ const linkClass =
                 <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
                 </svg>
-                Independent product & AI engineering · Tallinn, Estonia
+                Product & AI engineer · Tallinn, Estonia
             </p>
             <p
                 class="mt-8 text-lg sm:text-xl leading-relaxed text-charcoal/85 dark:text-neutral-200 max-w-[62ch]"
             >
-                Most teams that need an AI workflow or a focused digital product
-                can skip the six-figure agency retainer and the full-time ML hire.
-                One experienced engineer can scope the problem, set a clean GDPR
-                data boundary, wire the integration or product end-to-end, and hand
-                over code your team can actually run.
+                If you need an AI feature or a small product built, you can hire me
+                instead of an agency or a full-time ML engineer. I scope it with
+                you, sort out where your data goes under GDPR, build it, and hand
+                over code your team can run without me.
             </p>
             <div class="mt-8 flex flex-wrap items-center gap-3">
                 <a
@@ -74,7 +92,7 @@ const linkClass =
                     Describe your project
                     <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
-                <a href="#engagement" class={`${linkClass} px-2 py-3`}>How engagements work</a>
+                <a href="#engagement" class={`${linkClass} px-2 py-3`}>How we'd work together</a>
             </div>
         </header>
 
@@ -94,24 +112,16 @@ const linkClass =
                                 {service.title}
                             </h3>
                             <dl class="space-y-4 text-base leading-relaxed">
-                                <div>
-                                    <dt class="text-xs font-semibold uppercase tracking-wider text-sage-700 dark:text-sage-300">
-                                        Scope
-                                    </dt>
-                                    <dd class="mt-1 text-charcoal/80 dark:text-neutral-300">
-                                        {service.scope}
-                                    </dd>
-                                </div>
-                                {service.discipline && (
+                                {service.details.map((detail) => (
                                     <div>
                                         <dt class="text-xs font-semibold uppercase tracking-wider text-sage-700 dark:text-sage-300">
-                                            Discipline
+                                            {detail.label}
                                         </dt>
                                         <dd class="mt-1 text-charcoal/80 dark:text-neutral-300">
-                                            {service.discipline}
+                                            {detail.text}
                                         </dd>
                                     </div>
-                                )}
+                                ))}
                             </dl>
                         </li>
                     ))
@@ -128,40 +138,42 @@ const linkClass =
                 Running in production
             </h2>
             <p class="mt-3 text-base text-charcoal/70 dark:text-neutral-400 max-w-[60ch]">
-                Client work and my own products, all live and checkable.
+                Client work and my own products. Follow the links to see them running.
             </p>
             <div class="mt-8 grid gap-4">
                 <article class="glass-ice-card rounded-2xl p-6 sm:p-7">
                     <h3 class="font-manrope font-semibold text-xl text-charcoal dark:text-white">Pistiik OÜ</h3>
                     <p class="mt-1 text-sm font-medium text-sage-700 dark:text-sage-300">Client · AI integration</p>
                     <p class="mt-2 leading-relaxed text-charcoal/80 dark:text-neutral-300">
-                        Built the AI routing layer behind Estonian KYC/KYB/AML broker
-                        <a class={linkClass} href="https://pistiik.com" target="_blank" rel="noopener">pistiik.com</a>,
-                        routing verification checks across providers by geography and
-                        document type behind a single pay-per-use interface.
+                        <a class={linkClass} href="https://pistiik.com" target="_blank" rel="noopener">Pistiik</a>
+                        is an Estonian broker for KYC, KYB, and AML checks. I built the
+                        AI layer that picks a verification provider for each check based
+                        on country and document type. Pistiik's customers see one
+                        pay-per-use interface.
                     </p>
                 </article>
                 <article class="glass-ice-card rounded-2xl p-6 sm:p-7">
                     <h3 class="font-manrope font-semibold text-xl text-charcoal dark:text-white">nanas.build</h3>
-                    <p class="mt-1 text-sm font-medium text-sage-700 dark:text-sage-300">Own product · AI & programmatic CAD</p>
+                    <p class="mt-1 text-sm font-medium text-sage-700 dark:text-sage-300">Own product · AI & CAD</p>
                     <p class="mt-2 leading-relaxed text-charcoal/80 dark:text-neutral-300">
-                        I built and operate
+                        I built and run
                         <a class={linkClass} href="https://www.nanas.build" target="_blank" rel="noopener">nanas.build</a>,
-                        an AI-assisted custom CAD and 3D printing service in Tallinn:
-                        automated FreeCAD/build123d modelling, server-side 3D orbit
-                        previews, WebGPU multipart inspection, and a full JSON Agent API
-                        (<code class="font-mono text-[0.9em]">/llms.txt</code>).
+                        a custom CAD and 3D printing service in Tallinn. It generates
+                        models with FreeCAD and build123d, renders a 3D preview on the
+                        server, and lets you inspect each part in the browser with WebGPU.
+                        AI agents can use it through a JSON API, documented at
+                        <code class="font-mono text-[0.9em]">/llms.txt</code>.
                     </p>
                 </article>
                 <article class="glass-ice-card rounded-2xl p-6 sm:p-7">
                     <h3 class="font-manrope font-semibold text-xl text-charcoal dark:text-white">Nanas Sound</h3>
                     <p class="mt-1 text-sm font-medium text-sage-700 dark:text-sage-300">Own products · apps & hardware</p>
                     <p class="mt-2 leading-relaxed text-charcoal/80 dark:text-neutral-300">
-                        Shipped
+                        I shipped
                         <a class={linkClass} href="https://www.nanas.ee/airbending" target="_blank" rel="noopener">AirBending</a>
                         and
                         <a class={linkClass} href="https://www.nanas.ee/bolabolabola" target="_blank" rel="noopener">Bolabolabola</a>
-                        on the App Store, and embedded firmware for
+                        on the App Store and wrote embedded firmware for
                         <a class={linkClass} href="https://mashmachines.com/" target="_blank" rel="noopener">Mash Machine</a>
                         and
                         <a class={linkClass} href="https://makeelectronicsound.com/collaborations" target="_blank" rel="noopener">MES Arpeggiator</a>.
@@ -171,9 +183,9 @@ const linkClass =
                     <h3 class="font-manrope font-semibold text-xl text-charcoal dark:text-white">Outcome-billed email verifier</h3>
                     <p class="mt-1 text-sm font-medium text-sage-700 dark:text-sage-300">Reference integration</p>
                     <p class="mt-2 leading-relaxed text-charcoal/80 dark:text-neutral-300">
-                        A GDPR-first email verification pipeline that checks syntax, MX,
-                        SMTP handshakes, catch-all, and role patterns, with published
-                        false-positive rates.
+                        An email verification pipeline built for GDPR. It checks each
+                        address's syntax, MX records, SMTP handshake, catch-all setup,
+                        and role addresses like info@.
                     </p>
                 </article>
             </div>
@@ -185,31 +197,31 @@ const linkClass =
                 id="engagement-heading"
                 class="font-manrope font-bold text-2xl sm:text-3xl tracking-tight text-charcoal dark:text-white"
             >
-                How engagements work
+                Working together
             </h2>
             <dl class="mt-8 space-y-6 text-base leading-relaxed">
                 <div class="grid sm:grid-cols-[14rem_1fr] gap-x-10 gap-y-1">
-                    <dt class="font-manrope font-semibold text-charcoal dark:text-white">Direct execution</dt>
+                    <dt class="font-manrope font-semibold text-charcoal dark:text-white">Who does the work</dt>
                     <dd class="text-charcoal/80 dark:text-neutral-300">
                         You work with me directly, from the first scoping call to
                         deployment. I write and ship the code myself.
                     </dd>
                 </div>
                 <div class="grid sm:grid-cols-[14rem_1fr] gap-x-10 gap-y-1">
-                    <dt class="font-manrope font-semibold text-charcoal dark:text-white">Engagement shapes</dt>
+                    <dt class="font-manrope font-semibold text-charcoal dark:text-white">Ways to start</dt>
                     <dd class="text-charcoal/80 dark:text-neutral-300">
-                        Short discovery & architecture memos, fixed-scope 1–3 week
-                        product or integration builds, or focused fractional principal
-                        engineering.
+                        A short discovery ending in a written architecture memo, a
+                        fixed-scope build of 1–3 weeks, or ongoing part-time work as a
+                        senior engineer on your team.
                     </dd>
                 </div>
                 <div class="grid sm:grid-cols-[14rem_1fr] gap-x-10 gap-y-1">
-                    <dt class="font-manrope font-semibold text-charcoal dark:text-white">EU B2B invoicing</dt>
+                    <dt class="font-manrope font-semibold text-charcoal dark:text-white">Contracts & invoices</dt>
                     <dd class="text-charcoal/80 dark:text-neutral-300">
-                        All consulting and freelance engagements are contracted and
-                        invoiced through my Estonian company,
+                        I contract and invoice all client work through my Estonian
+                        company,
                         <a class={linkClass} href="https://chloematt.eu" target="_blank" rel="noopener">Chloe & Matt OÜ</a>
-                        (Estonian Commercial Register no. 14305217, Tallinn, Estonia).
+                        (Estonian Commercial Register no. 14305217, Tallinn).
                     </dd>
                 </div>
             </dl>
