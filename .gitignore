@@ -19,3 +19,7 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# agent skills (marketing-skills, impeccable) — project-scoped, not committed
+.agents/
+skills-lock.json
