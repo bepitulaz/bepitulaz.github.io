@@ -57,6 +57,36 @@ const linkClass =
         image: "https://www.asepbagja.com/images/about.jpg",
         type: "website",
     }}
+    schema={[
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "Work with me",
+            url: "https://www.asepbagja.com/work/",
+            description:
+                "Hire Asep Bagja, a product and AI engineer in Tallinn, Estonia, for AI features, web and Apple apps, and hardware projects. Contracted and invoiced through Chloe & Matt OÜ.",
+            about: {
+                "@type": "Person",
+                name: "Asep Bagja",
+                jobTitle: "Product & AI Engineer",
+                url: "https://www.asepbagja.com/about/",
+                email: "mailto:asep@chloeandmatt.eu",
+                address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Tallinn",
+                    addressCountry: "EE",
+                },
+            },
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.asepbagja.com/" },
+                { "@type": "ListItem", position: 2, name: "Work with me", item: "https://www.asepbagja.com/work/" },
+            ],
+        },
+    ]}
 >
     <Navbar />
 

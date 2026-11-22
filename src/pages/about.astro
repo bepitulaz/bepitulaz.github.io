@@ -8,14 +8,52 @@ const yearOfExperience = new Date().getFullYear() - 2010;
 ---
 
 <Layout
-    title="About | Asep Bagja"
-    description="Who is Asep Bagja? Find out more about him, his background, and his works."
+    title="About Asep Bagja — Product & AI Engineer in Tallinn, Estonia"
+    description="Who is Asep Bagja? Product & AI engineer in Tallinn, Estonia — self-taught, writing software since 2010, and building under Nanas Sound."
     openGraph={{
-        title: `About | Asep Bagja`,
+        title: "About Asep Bagja — Product & AI Engineer in Tallinn, Estonia",
         url: "https://www.asepbagja.com/about",
         image: "https://www.asepbagja.com/images/about.jpg",
         type: "website",
     }}
+    schema={[
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            mainEntity: {
+                "@type": "Person",
+                name: "Asep Bagja",
+                alternateName: "Asep Bagja Priandana",
+                jobTitle: "Product & AI Engineer",
+                url: "https://www.asepbagja.com/about/",
+                image: "https://www.asepbagja.com/images/about.jpg",
+                address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Tallinn",
+                    addressCountry: "EE",
+                },
+                worksFor: {
+                    "@type": "Organization",
+                    name: "Chloe & Matt OÜ",
+                    url: "https://chloematt.eu",
+                },
+                sameAs: [
+                    "https://www.github.com/bepitulaz",
+                    "https://www.linkedin.com/in/asepbagja/",
+                    "https://www.x.com/bepitulaz",
+                    "https://youtube.com/@bepitulaz",
+                ],
+            },
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.asepbagja.com/" },
+                { "@type": "ListItem", position: 2, name: "About", item: "https://www.asepbagja.com/about/" },
+            ],
+        },
+    ]}
 >
     <Navbar />
     <!-- Profile -->

@@ -9,17 +9,28 @@ interface OpenGraph {
   url: string;
 }
 
+export interface HreflangAlternate {
+  lang: string;
+  url: string;
+}
+
 export interface Props {
   title: string;
   description: string;
   openGraph: OpenGraph;
+  /** BCP 47 language of the page, rendered on <html lang>. Defaults to "en". */
+  lang?: string;
+  /** hreflang alternates for this page, including its own self-reference. */
+  alternates?: HreflangAlternate[];
+  /** JSON-LD schema.org objects to emit for this page. */
+  schema?: object[];
 }
 
-const { title, description, openGraph } = Astro.props;
+const { title, description, openGraph, lang = "en", alternates, schema } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -41,6 +52,11 @@ const { title, description, openGraph } = Astro.props;
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    {alternates?.map((alt) => <link rel="alternate" hreflang={alt.lang} href={alt.url} />)}
+    {schema?.map((obj) => (
+      <script type="application/ld+json" set:html={JSON.stringify(obj)} />
+    ))}
 
     <script
       defer

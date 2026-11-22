@@ -47,14 +47,64 @@ const links = [
 ---
 
 <Layout
-    title="Home | Asep Bagja"
+    title="Asep Bagja — Product & AI Engineer in Tallinn, Estonia"
     description="Asep Bagja is a product and AI engineer in Tallinn, Estonia. He builds AI features, web apps, iOS apps, and firmware for clients, and runs Nanas Sound."
     openGraph={{
-        title: "Home | Asep Bagja",
+        title: "Asep Bagja — Product & AI Engineer in Tallinn, Estonia",
         url: "https://www.asepbagja.com",
         image: "https://www.asepbagja.com/images/paljassaare.jpg",
         type: "website",
     }}
+    schema={[
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Asep Bagja",
+            url: "https://www.asepbagja.com/",
+            inLanguage: ["en", "id"],
+            publisher: {
+                "@type": "Person",
+                name: "Asep Bagja",
+                url: "https://www.asepbagja.com/about/",
+            },
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Asep Bagja",
+            alternateName: "Asep Bagja Priandana",
+            url: "https://www.asepbagja.com/about/",
+            jobTitle: "Product & AI Engineer",
+            description:
+                "Product and AI engineer in Tallinn, Estonia. Builds AI features, web and Apple apps, and hardware for clients; contracts through Chloe & Matt OÜ.",
+            address: {
+                "@type": "PostalAddress",
+                addressLocality: "Tallinn",
+                addressCountry: "EE",
+            },
+            worksFor: {
+                "@type": "Organization",
+                name: "Chloe & Matt OÜ",
+                url: "https://chloematt.eu",
+            },
+            knowsAbout: [
+                "AI features engineering",
+                "LLM integration",
+                "Elixir and Phoenix LiveView",
+                "TypeScript",
+                "SwiftUI",
+                "ESP32 firmware",
+                "Nerves embedded Elixir",
+                "CAD automation",
+            ],
+            sameAs: [
+                "https://www.github.com/bepitulaz",
+                "https://www.linkedin.com/in/asepbagja/",
+                "https://www.x.com/bepitulaz",
+                "https://youtube.com/@bepitulaz",
+            ],
+        },
+    ]}
 >
     <EstoniaBackground />
 

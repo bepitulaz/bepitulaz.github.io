@@ -10,7 +10,7 @@ lang: "Bahasa Indonesia"
 featured: false
 ---
 
-Selain [bermusik](http://asepbagja.com/music) saya juga senang mempelajari bahasa, baik bahasa pemrograman maupun bahasa asing. Beberapa bahasa asing yang pernah saya pelajari di antaranya Inggris, Cina (Mandarin), Finnish (Finland), Melayu (Malaysia), Hungaria, dan Estonia. Tapi beberapa di antaranya sudah mulai lupa karena tidak pernah dipakai. Bahasa asing yang masih aktif saya pakai dan pelajari sekarang hanya Inggris, Estonia, dan Melayu. Bahasa Inggris tentu saja karena itu sudah menjadi bahasa sehari-hari, Estonia karena sekarang saya tinggal di Estonia dan berencana untuk menetap jangka panjang, serta Melayu biasanya untuk berkomunikasi dengan teman-teman di komunitas *indie maker* yang isinya banyak orang Malaysia.
+Selain [bermusik](https://www.asepbagja.com/music/a-new-life-singles/) saya juga senang mempelajari bahasa, baik bahasa pemrograman maupun bahasa asing. Beberapa bahasa asing yang pernah saya pelajari di antaranya Inggris, Cina (Mandarin), Finnish (Finland), Melayu (Malaysia), Hungaria, dan Estonia. Tapi beberapa di antaranya sudah mulai lupa karena tidak pernah dipakai. Bahasa asing yang masih aktif saya pakai dan pelajari sekarang hanya Inggris, Estonia, dan Melayu. Bahasa Inggris tentu saja karena itu sudah menjadi bahasa sehari-hari, Estonia karena sekarang saya tinggal di Estonia dan berencana untuk menetap jangka panjang, serta Melayu biasanya untuk berkomunikasi dengan teman-teman di komunitas *indie maker* yang isinya banyak orang Malaysia.
 
 <div class="text-center">
 <figure class="figure">

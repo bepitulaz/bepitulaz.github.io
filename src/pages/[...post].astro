@@ -38,16 +38,54 @@ const language = isIndonesian ? "Bahasa Indonesia" : "English";
 
 // Calculate reading time
 const readingTime = Math.ceil(article.body.split(" ").length / 200);
+
+const canonicalUrl = "https://www.asepbagja.com/" + slug + "/";
+const category = article.data.categories[0].toLowerCase();
+
+const schema = [
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: article.data.title,
+        description: article.data.summary,
+        image: "https://www.asepbagja.com" + image,
+        datePublished: date.toISOString(),
+        inLanguage: "en",
+        keywords: article.data.categories.join(", "),
+        author: {
+            "@type": "Person",
+            name: "Asep Bagja",
+            url: "https://www.asepbagja.com/about/",
+        },
+        publisher: {
+            "@type": "Person",
+            name: "Asep Bagja",
+            url: "https://www.asepbagja.com/about/",
+        },
+        mainEntityOfPage: canonicalUrl,
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://www.asepbagja.com/" },
+            { "@type": "ListItem", position: 2, name: article.data.categories[0], item: "https://www.asepbagja.com/" + category + "/" },
+            { "@type": "ListItem", position: 3, name: article.data.title, item: canonicalUrl },
+        ],
+    },
+];
 ---
 
 <Layout
   title={`${article.data.title} | Asep Bagja`}
   description={article.data.summary}
+  lang="en"
+  schema={schema}
   openGraph={{
     title: `${article.data.title} | Asep Bagja`,
-    url: "https://www.asepbagja.com/" + slug,
+    url: canonicalUrl,
     image: "https://www.asepbagja.com" + image,
-    type: "website",
+    type: "article",
   }}
 >
   <Navbar />
@@ -111,9 +149,9 @@ const readingTime = Math.ceil(article.body.split(" ").length / 200);
       <!-- Content -->
       <div class="space-y-5 md:space-y-8">
         <div class="space-y-3">
-          <h2 class="text-3xl font-bold md:text-3xl font-manrope text-gray-800 dark:text-white">
+          <h1 class="text-3xl font-bold md:text-3xl font-manrope text-gray-800 dark:text-white">
             {article.data.title}
-          </h2>
+          </h1>
         </div>
 
         <div class="blog text-xl text-gray-700 dark:text-neutral-300">

@@ -9,7 +9,7 @@ summary: "How I learn foreign languages on my own without going to special-sched
 featured: false
 ---
 
-Aside from [composing music](http://asepbagja.com/music) I also like to learn new languages, whether they’re programming languages or foreign languages. Some of the foreign languages that I learned are English, Mandarin (China), Finnish (Finland), Malay (Malaysia), and Estonian. I forgot some of the languages since they’re rarely in use. The foreign languages that I still actively use and learn are English, Estonian, and Malay. English because it has become a daily language, Estonian because I live and plan to live long term in Estonia, also Malay to communicate with friends in the indie maker community since the majority of the people there are Malaysians.
+Aside from [composing music](https://www.asepbagja.com/music/a-new-life-singles/) I also like to learn new languages, whether they’re programming languages or foreign languages. Some of the foreign languages that I learned are English, Mandarin (China), Finnish (Finland), Malay (Malaysia), and Estonian. I forgot some of the languages since they’re rarely in use. The foreign languages that I still actively use and learn are English, Estonian, and Malay. English because it has become a daily language, Estonian because I live and plan to live long term in Estonia, also Malay to communicate with friends in the indie maker community since the majority of the people there are Malaysians.
 
 <div class="text-center">
 <figure class="figure">

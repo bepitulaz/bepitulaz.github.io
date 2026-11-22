@@ -1,0 +1,32 @@
+# Asep Bagja
+
+> Product and AI engineer in Tallinn, Estonia. Builds AI features, web apps
+> (Elixir/Phoenix LiveView, TypeScript, Python), iOS/macOS apps (SwiftUI), and
+> hardware/firmware (ESP32, Nerves, CAD automation) for clients. Writes software
+> and music-tech articles in English and Indonesian, and runs Nanas Sound
+> (music apps and DIY hardware) and nanas.build (AI-driven CAD and 3D printing).
+
+Hire Asep for freelance or contract work: [Work with me](https://www.asepbagja.com/work).
+Machine-readable version of that page: [work.md](https://www.asepbagja.com/work.md).
+
+## Pages
+
+- [Work with me](https://www.asepbagja.com/work): services, past client work, engagement model, contact. Contact: asep@chloeandmatt.eu (projects are contracted and invoiced through Chloe & Matt OÜ, Estonian Commercial Register no. 14305217, Tallinn).
+- [About Asep Bagja](https://www.asepbagja.com/about): biography, 16+ years of software experience since 2010, self-taught, based in Tallinn, Estonia.
+- [English blog](https://www.asepbagja.com/blog): articles on AI engineering, software, electronics, music technology, and life in Estonia.
+- [Indonesian blog](https://www.asepbagja.com/id/blog): the same writing in Bahasa Indonesia.
+- [English RSS feed](https://www.asepbagja.com/rss.xml)
+- [Indonesian RSS feed](https://www.asepbagja.com/id/rss.xml)
+
+## Own products
+
+- [nanas.build](https://www.nanas.build): custom CAD and 3D printing service in Tallinn; models generated with FreeCAD and build123d, browser 3D inspection with WebGPU, JSON API for AI agents.
+- [Nanas Sound](https://www.nanas.ee): music apps (AirBending, Bolabolabola on the App Store) and DIY music hardware.
+
+## Facts
+
+- Name: Asep Bagja (Asep Bagja Priandana), known online as bepituLaz.
+- Location: Tallinn, Estonia (originally from Bali, Indonesia).
+- Won an Anthropic hackathon with an AI-band project built on Claude (2026).
+- Blog topics: AI features in products, LLM integration, Elixir/Phoenix, SwiftUI, ESP32 firmware, CAD automation, music technology, expat life in Estonia.
+- Languages: English, Bahasa Indonesia, Estonian (learning).
