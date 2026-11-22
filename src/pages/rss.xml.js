@@ -7,7 +7,7 @@ const parser = new MarkdownIt();
 
 export async function GET(context) {
   const allPosts = await getCollection("blog", ({ id }) =>
-    id.startsWith("id/")
+    id.startsWith("en/")
   );
 
   const posts = allPosts.sort(
@@ -15,19 +15,19 @@ export async function GET(context) {
   );
 
   return rss({
-    title: "Blog Asep Bagja",
+    title: "Asep Bagja's Blog",
     description:
-      "Tulisan tentang rekayasa perangkat lunak, elektronik, musik, dan pengembangan diri oleh Asep Bagja.",
+      "Writings on software engineering, electronics, music, and personal development by Asep Bagja.",
     site: context.site,
-    customData: `<language>id</language>`,
+    customData: `<language>en-us</language>`,
     items: posts.map((post) => {
       const category = post.data.categories[0].toLowerCase();
-      const slug = post.slug.replace("id/", "");
+      const slug = post.slug.replace("en/", "");
       return {
         title: post.data.title,
         pubDate: post.data.date,
         description: post.data.summary,
-        link: `/id/${category}/${slug}/`,
+        link: `/${category}/${slug}/`,
         content: sanitizeHtml(parser.render(post.body), {
           allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
           allowedAttributes: {
