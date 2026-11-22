@@ -14,7 +14,7 @@ Every positioning and structural decision below has been settled with Asep. Do n
 |---|---|---|
 | D1 | Primary consulting & freelance brand | **Asep Bagja** (`asepbagja.com`). All inbound consulting, portfolio proof, and contact flow through `asepbagja.com`. |
 | D2 | Role of **Chloe & Matt OÜ** (`chloematt.eu`) | **B2B contracting & invoicing entity only** (Estonian Registry no. `14305217`). `chloematt.eu` has already been reduced to a 1-page corporate card pointing here. Never market an agency or a "two-person studio". |
-| D3 | Role of **Nanas Sound OÜ** (`nanas.ee`, `nanas.build`) | **Flagship product company & live engineering proof.** Operated by Nanas Sound OÜ. Showcases production AI-assisted CAD (`nanas.build`), iOS/macOS music apps (`AirBending`, `Bolabolabola`, `MADE BY ME`), and embedded hardware (`MES Arpeggiator`, `Mash Machine`). |
+| D3 | Role of **Nanas Sound OÜ** (`nanas.ee`, `nanas.build`) | **Flagship product company & live engineering proof.** Operated by Nanas Sound OÜ. Showcases production AI-assisted CAD (`nanas.build`), iOS/macOS music apps (`AirBending`, `Bolabolabola`), and embedded hardware (`MES Arpeggiator`, `Mash Machine`). `MADE BY ME` is unreleased: never mention it on the site. |
 | D4 | Music / DJ framing | **Hobby & creative craft (`bepitulaz`), NOT a dual freelance career.** Frame music as the personal craft that inspired Nanas Sound, never as a professional DJ service. |
 | D5 | Dead links to remove | Replace every reference to `https://www.nanassound.com` (currently in `src/pages/about.astro` lines 72 & 77) with `https://www.nanas.ee` and `https://www.nanas.build`. |
 | D6 | Visual & technical preservation | **Keep the Three.js Estonia background (`EstoniaBackground.astro`, `estonia-scene.ts`), Season Switcher, Liquid Glass cards (`glass-ice`, `glass-ice-card`), Tailwind palette (`cream`, `charcoal`, `sage-*`), and Indonesian blog (`/id/blog`, `/[...category].astro`) intact.** |
@@ -75,7 +75,7 @@ Update the `links` array in `src/pages/index.astro` so the top card leads direct
 2. **nanas.build** (`https://www.nanas.build`, external)
    - *Description:* `AI-assisted custom CAD & 3D printing service (built & operated by Nanas Sound OÜ)`
 3. **Nanas Sound** (`https://www.nanas.ee`, external)
-   - *Description:* `B2C music software (AirBending, Bolabolabola, MADE BY ME) & DIY hardware`
+   - *Description:* `B2C music software (AirBending, Bolabolabola) & DIY hardware`
 4. **English Blog** (`https://asepbagja.substack.com`, external)
    - *Description:* `Build logs and essays on agentic AI, product engineering, and music tech`
 5. **Blog Indonesia** (`/id/blog`, internal)
@@ -108,7 +108,7 @@ Include these four sections on `/work`:
 Present real, verifiable systems (no fabricated metrics):
 - **Pistiik OÜ (Client AI Integration)** — Built the AI routing layer behind Estonian KYC/KYB/AML broker [pistiik.com](https://pistiik.com), routing verification checks across providers by geography and document type behind a single pay-per-use interface.
 - **nanas.build (Own Product — AI & Programmatic CAD)** — Built and operate [nanas.build](https://www.nanas.build), an AI-assisted custom CAD and 3D printing service in Tallinn featuring automated FreeCAD/build123d modelling, server-side 3D orbit previews, WebGPU multipart inspection, and a full JSON Agent API (`/llms.txt`).
-- **Nanas Sound Apps & Hardware (Own Products)** — Shipped [AirBending](https://www.nanas.ee/airbending) and [Bolabolabola](https://www.nanas.ee/bolabolabola) on the App Store, `MADE BY ME` (local CLAP/ONNX audio search on macOS arm64), and embedded firmware for [Mash Machine](https://mashmachines.com/) and [MES Arpeggiator](https://makeelectronicsound.com/collaborations).
+- **Nanas Sound Apps & Hardware (Own Products)** — Shipped [AirBending](https://www.nanas.ee/airbending) and [Bolabolabola](https://www.nanas.ee/bolabolabola) on the App Store, and embedded firmware for [Mash Machine](https://mashmachines.com/) and [MES Arpeggiator](https://makeelectronicsound.com/collaborations).
 - **Outcome-Billed Email Verifier (Reference Integration)** — Built a GDPR-first email verification pipeline checking syntax, MX, SMTP handshakes, catch-all, and role patterns with published false-positive rates.
 
 #### Section D — How We Work & Invoicing (`Chloe & Matt OÜ`)
@@ -165,6 +165,6 @@ Verify the built output in `dist/`:
 ## §5 Invariants & Don'ts
 
 - **NEVER** re-introduce agency framing ("we are a two-person studio", "Asep does not build"). Asep is the hands-on principal engineer.
-- **NEVER** fabricate client logos, testimonials, or revenue numbers. Only cite verified work (`Pistiik OÜ`, `nanas.build`, `nanas.ee`, `Email Verifier`, `Mash Machine`, `MES Arpeggiator`, `MADE BY ME`).
+- **NEVER** fabricate client logos, testimonials, or revenue numbers. Only cite verified work (`Pistiik OÜ`, `nanas.build`, `nanas.ee`, `Email Verifier`, `Mash Machine`, `MES Arpeggiator`).
 - **NEVER** present DJing as a commercial service for hire.
 - **NEVER** remove `#estonia-bg-hero-marker` from `src/pages/index.astro`.

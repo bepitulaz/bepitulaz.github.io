@@ -5,34 +5,28 @@ import EstoniaBackground from "../components/EstoniaBackground.astro";
 import Hero from "../components/Hero.astro";
 import Footer from "../components/Footer.astro";
 
-const yearsOfExperience = new Date().getFullYear() - 2010;
-
 const links = [
     {
-        title: "Hire Me · Consulting & Engineering",
-        description:
-            "Bounded AI integrations, Elixir/Python/Swift product builds & technical discovery",
+        title: "Hire Me",
+        description: "What I build for clients and how a project starts",
         href: "/work",
         external: false,
     },
     {
         title: "nanas.build",
-        description:
-            "AI-assisted custom CAD & 3D printing service (built & operated by Nanas Sound OÜ)",
+        description: "Custom parts, modelled with AI and 3D printed in Tallinn",
         href: "https://www.nanas.build",
         external: true,
     },
     {
         title: "Nanas Sound",
-        description:
-            "B2C music software (AirBending, Bolabolabola, MADE BY ME) & DIY hardware",
+        description: "Music apps like AirBending and Bolabolabola, plus DIY hardware",
         href: "https://www.nanas.ee",
         external: true,
     },
     {
         title: "English Blog",
-        description:
-            "Build logs and essays on agentic AI, product engineering, and music tech",
+        description: "Writing about tech, music, and life",
         href: "https://asepbagja.substack.com",
         external: true,
     },
@@ -45,7 +39,7 @@ const links = [
     },
     {
         title: "About Me",
-        description: `${yearsOfExperience}+ years of software engineering, background, and contact details`,
+        description: "Self-taught, writing software since 2010",
         href: "/about",
         external: false,
     },
@@ -54,7 +48,7 @@ const links = [
 
 <Layout
     title="Home | Asep Bagja"
-    description="Asep Bagja, Principal Product & AI Engineer in Tallinn, Estonia. Bounded AI integrations, full-stack web products, and hardware-software systems. Founder of Nanas Sound."
+    description="Asep Bagja is a product and AI engineer in Tallinn, Estonia. He builds AI features, web apps, iOS apps, and firmware for clients, and runs Nanas Sound."
     openGraph={{
         title: "Home | Asep Bagja",
         url: "https://www.asepbagja.com",
