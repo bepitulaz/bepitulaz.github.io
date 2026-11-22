@@ -79,6 +79,6 @@ Saya terdaftar sebagai pengangguran hanya 3 bulan saja, karena di bulan ketiga s
 
 ### Apa yang sekarang saya lakukan?
 
-Saat ini saya masih melamar-lamar kerja, tapi tidak seagresif di 3 bulan awal setelah PHK. Saya hanya melamar kalau ada posisi yang menarik dan bisa remote. Sembari mencari, saya sibuk mengembangkan bisnis teknologi musik saya di [Nanas Sound](https://www.nanassound.com).
+Saat ini saya masih melamar-lamar kerja, tapi tidak seagresif di 3 bulan awal setelah PHK. Saya hanya melamar kalau ada posisi yang menarik dan bisa remote. Sembari mencari, saya sibuk mengembangkan bisnis teknologi musik saya di [Nanas Sound](https://www.nanas.ee).
 
 Saya juga membantu istri saya untuk mengembangkan bisnis hotel untuk anjing dan kucing di Estonia. Cerita tentang bisnis ini mungkin akan saya bahas di lain waktu.

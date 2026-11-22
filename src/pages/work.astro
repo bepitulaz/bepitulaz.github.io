@@ -1,0 +1,238 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const projectMailto =
+    "mailto:asep@chloeandmatt.eu?subject=Project%20enquiry&body=Hi%20Asep%2C%0D%0A%0D%0AWhat%20we%20want%20to%20build%20or%20fix%3A%0D%0A%0D%0ATimeline%20%2F%20constraints%3A%0D%0A%0D%0A";
+
+const services = [
+    {
+        title: "Bounded AI integrations & agent workflows",
+        scope: "Identity/KYC routing, document handling, deterministic LLM pipelines, local ONNX inference, and agent-ready APIs.",
+        discipline:
+            "GDPR processor agreements, EU data residency, and zero-training terms settled before the first line of code.",
+    },
+    {
+        title: "Focused digital products, web & native",
+        scope: "End-to-end web applications (Elixir/Phoenix LiveView, TypeScript, Python), macOS/iOS apps (Swift/SwiftUI), and internal tools shipped in days or weeks rather than quarters.",
+        discipline:
+            "Working code, clean tests, and deployment notes handed over without lock-in.",
+    },
+    {
+        title: "Hardware–software & CAD automation bridges",
+        scope: "Programmatic CAD pipelines (build123d / FreeCAD), embedded Linux/Nerves (Raspberry Pi, ESP32), WebGPU/Three.js 3D viewers, and physical-digital product loops.",
+    },
+];
+
+const linkClass =
+    "font-medium text-sage-700 underline decoration-sage-300 underline-offset-4 hover:decoration-sage-600 dark:text-sage-300 dark:decoration-sage-700 dark:hover:decoration-sage-300 transition-colors";
+---
+
+<Layout
+    title="Work with me | Asep Bagja"
+    description="Independent product & AI engineering from Tallinn, Estonia. Bounded AI integrations, Elixir/Python/Swift product builds, and hardware–software systems, contracted and invoiced via Chloe & Matt OÜ."
+    openGraph={{
+        title: "Work with me | Asep Bagja",
+        url: "https://www.asepbagja.com/work",
+        image: "https://www.asepbagja.com/images/about.jpg",
+        type: "website",
+    }}
+>
+    <Navbar />
+
+    <main class="max-w-3xl mx-auto px-6 sm:px-8 pt-16 sm:pt-24 pb-24">
+        <!-- A: Value proposition -->
+        <header>
+            <h1
+                class="font-manrope font-bold text-4xl sm:text-5xl tracking-tight leading-[1.08] text-charcoal dark:text-white text-balance"
+            >
+                One senior engineer on the call, the architecture, and the code.
+            </h1>
+            <p
+                class="mt-5 flex items-center gap-1.5 text-sm font-medium text-charcoal/70 dark:text-neutral-400"
+            >
+                <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
+                Independent product & AI engineering · Tallinn, Estonia
+            </p>
+            <p
+                class="mt-8 text-lg sm:text-xl leading-relaxed text-charcoal/85 dark:text-neutral-200 max-w-[62ch]"
+            >
+                Most teams that need an AI workflow or a focused digital product
+                can skip the six-figure agency retainer and the full-time ML hire.
+                One experienced engineer can scope the problem, set a clean GDPR
+                data boundary, wire the integration or product end-to-end, and hand
+                over code your team can actually run.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+                <a
+                    href={projectMailto}
+                    class="inline-flex items-center gap-2 rounded-full bg-sage-600 px-5 py-3 font-manrope font-semibold text-white hover:bg-sage-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2 focus-visible:ring-offset-cream dark:bg-sage-300 dark:text-sage-900 dark:hover:bg-sage-200 dark:focus-visible:ring-offset-slate-900 transition-colors"
+                >
+                    Describe your project
+                    <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+                <a href="#engagement" class={`${linkClass} px-2 py-3`}>How engagements work</a>
+            </div>
+        </header>
+
+        <!-- B: Services -->
+        <section class="mt-24" aria-labelledby="services-heading">
+            <h2
+                id="services-heading"
+                class="font-manrope font-bold text-2xl sm:text-3xl tracking-tight text-charcoal dark:text-white"
+            >
+                What I build for clients
+            </h2>
+            <ol class="mt-8 border-t border-sage-200 dark:border-sage-800">
+                {
+                    services.map((service) => (
+                        <li class="grid sm:grid-cols-[14rem_1fr] gap-x-10 gap-y-3 py-8 border-b border-sage-200 dark:border-sage-800">
+                            <h3 class="font-manrope font-semibold text-lg leading-snug text-charcoal dark:text-white text-balance">
+                                {service.title}
+                            </h3>
+                            <dl class="space-y-4 text-base leading-relaxed">
+                                <div>
+                                    <dt class="text-xs font-semibold uppercase tracking-wider text-sage-700 dark:text-sage-300">
+                                        Scope
+                                    </dt>
+                                    <dd class="mt-1 text-charcoal/80 dark:text-neutral-300">
+                                        {service.scope}
+                                    </dd>
+                                </div>
+                                {service.discipline && (
+                                    <div>
+                                        <dt class="text-xs font-semibold uppercase tracking-wider text-sage-700 dark:text-sage-300">
+                                            Discipline
+                                        </dt>
+                                        <dd class="mt-1 text-charcoal/80 dark:text-neutral-300">
+                                            {service.discipline}
+                                        </dd>
+                                    </div>
+                                )}
+                            </dl>
+                        </li>
+                    ))
+                }
+            </ol>
+        </section>
+
+        <!-- C: Proof -->
+        <section class="mt-24" aria-labelledby="proof-heading">
+            <h2
+                id="proof-heading"
+                class="font-manrope font-bold text-2xl sm:text-3xl tracking-tight text-charcoal dark:text-white"
+            >
+                Running in production
+            </h2>
+            <p class="mt-3 text-base text-charcoal/70 dark:text-neutral-400 max-w-[60ch]">
+                Client work and my own products, all live and checkable.
+            </p>
+            <div class="mt-8 grid gap-4">
+                <article class="glass-ice-card rounded-2xl p-6 sm:p-7">
+                    <h3 class="font-manrope font-semibold text-xl text-charcoal dark:text-white">Pistiik OÜ</h3>
+                    <p class="mt-1 text-sm font-medium text-sage-700 dark:text-sage-300">Client · AI integration</p>
+                    <p class="mt-2 leading-relaxed text-charcoal/80 dark:text-neutral-300">
+                        Built the AI routing layer behind Estonian KYC/KYB/AML broker
+                        <a class={linkClass} href="https://pistiik.com" target="_blank" rel="noopener">pistiik.com</a>,
+                        routing verification checks across providers by geography and
+                        document type behind a single pay-per-use interface.
+                    </p>
+                </article>
+                <article class="glass-ice-card rounded-2xl p-6 sm:p-7">
+                    <h3 class="font-manrope font-semibold text-xl text-charcoal dark:text-white">nanas.build</h3>
+                    <p class="mt-1 text-sm font-medium text-sage-700 dark:text-sage-300">Own product · AI & programmatic CAD</p>
+                    <p class="mt-2 leading-relaxed text-charcoal/80 dark:text-neutral-300">
+                        I built and operate
+                        <a class={linkClass} href="https://www.nanas.build" target="_blank" rel="noopener">nanas.build</a>,
+                        an AI-assisted custom CAD and 3D printing service in Tallinn:
+                        automated FreeCAD/build123d modelling, server-side 3D orbit
+                        previews, WebGPU multipart inspection, and a full JSON Agent API
+                        (<code class="font-mono text-[0.9em]">/llms.txt</code>).
+                    </p>
+                </article>
+                <article class="glass-ice-card rounded-2xl p-6 sm:p-7">
+                    <h3 class="font-manrope font-semibold text-xl text-charcoal dark:text-white">Nanas Sound</h3>
+                    <p class="mt-1 text-sm font-medium text-sage-700 dark:text-sage-300">Own products · apps & hardware</p>
+                    <p class="mt-2 leading-relaxed text-charcoal/80 dark:text-neutral-300">
+                        Shipped
+                        <a class={linkClass} href="https://www.nanas.ee/airbending" target="_blank" rel="noopener">AirBending</a>
+                        and
+                        <a class={linkClass} href="https://www.nanas.ee/bolabolabola" target="_blank" rel="noopener">Bolabolabola</a>
+                        on the App Store, MADE BY ME (local CLAP/ONNX audio search on
+                        macOS arm64), and embedded firmware for
+                        <a class={linkClass} href="https://mashmachines.com/" target="_blank" rel="noopener">Mash Machine</a>
+                        and
+                        <a class={linkClass} href="https://makeelectronicsound.com/collaborations" target="_blank" rel="noopener">MES Arpeggiator</a>.
+                    </p>
+                </article>
+                <article class="glass-ice-card rounded-2xl p-6 sm:p-7">
+                    <h3 class="font-manrope font-semibold text-xl text-charcoal dark:text-white">Outcome-billed email verifier</h3>
+                    <p class="mt-1 text-sm font-medium text-sage-700 dark:text-sage-300">Reference integration</p>
+                    <p class="mt-2 leading-relaxed text-charcoal/80 dark:text-neutral-300">
+                        A GDPR-first email verification pipeline that checks syntax, MX,
+                        SMTP handshakes, catch-all, and role patterns, with published
+                        false-positive rates.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- D: Engagement & invoicing -->
+        <section id="engagement" class="mt-24 scroll-mt-28" aria-labelledby="engagement-heading">
+            <h2
+                id="engagement-heading"
+                class="font-manrope font-bold text-2xl sm:text-3xl tracking-tight text-charcoal dark:text-white"
+            >
+                How engagements work
+            </h2>
+            <dl class="mt-8 space-y-6 text-base leading-relaxed">
+                <div class="grid sm:grid-cols-[14rem_1fr] gap-x-10 gap-y-1">
+                    <dt class="font-manrope font-semibold text-charcoal dark:text-white">Direct execution</dt>
+                    <dd class="text-charcoal/80 dark:text-neutral-300">
+                        You work with me directly, from the first scoping call to
+                        deployment. I write and ship the code myself.
+                    </dd>
+                </div>
+                <div class="grid sm:grid-cols-[14rem_1fr] gap-x-10 gap-y-1">
+                    <dt class="font-manrope font-semibold text-charcoal dark:text-white">Engagement shapes</dt>
+                    <dd class="text-charcoal/80 dark:text-neutral-300">
+                        Short discovery & architecture memos, fixed-scope 1–3 week
+                        product or integration builds, or focused fractional principal
+                        engineering.
+                    </dd>
+                </div>
+                <div class="grid sm:grid-cols-[14rem_1fr] gap-x-10 gap-y-1">
+                    <dt class="font-manrope font-semibold text-charcoal dark:text-white">EU B2B invoicing</dt>
+                    <dd class="text-charcoal/80 dark:text-neutral-300">
+                        All consulting and freelance engagements are contracted and
+                        invoiced through my Estonian company,
+                        <a class={linkClass} href="https://chloematt.eu" target="_blank" rel="noopener">Chloe & Matt OÜ</a>
+                        (Estonian Commercial Register no. 14305217, Tallinn, Estonia).
+                    </dd>
+                </div>
+            </dl>
+
+            <div class="mt-12 glass-ice-card rounded-2xl p-6 sm:p-8">
+                <p class="font-manrope font-semibold text-xl text-charcoal dark:text-white text-balance">
+                    Tell me what you want to build or fix, and your timeline.
+                </p>
+                <p class="mt-2 text-charcoal/75 dark:text-neutral-300">
+                    The email opens with those two questions already in place.
+                </p>
+                <a
+                    href={projectMailto}
+                    class="mt-6 inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full bg-sage-600 px-5 py-3 font-manrope font-semibold text-white hover:bg-sage-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sage-400 focus-visible:ring-offset-2 focus-visible:ring-offset-cream dark:bg-sage-300 dark:text-sage-900 dark:hover:bg-sage-200 dark:focus-visible:ring-offset-slate-900 transition-colors"
+                >
+                    Describe your project
+                    <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    <span class="font-inter font-medium opacity-90">asep@chloeandmatt.eu</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+</Layout>
