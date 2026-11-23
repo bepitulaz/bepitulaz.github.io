@@ -5,7 +5,7 @@ version of https://www.asepbagja.com/work — same facts, plain markdown.
 
 ## Contact
 
-- Email: asep@chloeandmatt.eu
+- Email: asep@chloematt.eu
 - Contracts and invoices: Chloe & Matt OÜ (Estonian Commercial Register no. 14305217, Tallinn) — https://chloematt.eu
 - You work with Asep directly, from the first scoping call to deployment.
 

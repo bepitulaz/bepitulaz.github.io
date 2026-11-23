@@ -65,7 +65,7 @@ Update the hero intro so visitors immediately understand Asep's engineering offe
   > Off the clock, I compose electronic music under the alias **bepitulaz**.
 - **CTA Row inside Hero (below paragraphs):**
   - Primary pill button: `Work with me →` (links to `/work`)
-  - Secondary text/glass link: `Email asep@chloeandmatt.eu` (`mailto:asep@chloeandmatt.eu?subject=Consulting%20enquiry`)
+  - Secondary text/glass link: `Email asep@chloematt.eu` (`mailto:asep@chloematt.eu?subject=Consulting%20enquiry`)
 
 ### 3.2 `src/pages/index.astro` (Homepage Link Cards)
 Update the `links` array in `src/pages/index.astro` so the top card leads directly to consulting/hiring, followed by live products and blogs:
@@ -118,7 +118,7 @@ Clear, zero-confusion commercial block:
 - **EU B2B contracting & invoicing:**
   > All consulting and freelance engagements are contracted and invoiced through my Estonian company, **[Chloe & Matt OÜ](https://chloematt.eu)** (Estonian Commercial Register no. `14305217`, Tallinn, Estonia).
 - **Primary CTA:**
-  - Button: `Describe your project → asep@chloeandmatt.eu` (`mailto:asep@chloeandmatt.eu?subject=Project%20enquiry&body=Hi%20Asep%2C%0D%0A%0D%0AWhat%20we%20want%20to%20build%20or%20fix%3A%0D%0A%0D%0ATimeline%20%2F%20constraints%3A%0D%0A%0D%0A`)
+  - Button: `Describe your project → asep@chloematt.eu` (`mailto:asep@chloematt.eu?subject=Project%20enquiry&body=Hi%20Asep%2C%0D%0A%0D%0AWhat%20we%20want%20to%20build%20or%20fix%3A%0D%0A%0D%0ATimeline%20%2F%20constraints%3A%0D%0A%0D%0A`)
 
 ### 3.4 `src/pages/about.astro` & `src/content/about/en.md`
 Update `src/pages/about.astro` (and keep `src/content/about/en.md` in sync) to fix stale facts:
@@ -128,7 +128,7 @@ Update `src/pages/about.astro` (and keep `src/content/about/en.md` in sync) to f
    - **Chloe & Matt OÜ** (`chloematt.eu`, reg. 14305217) — his Estonian company used for B2B software consulting and client invoicing.
 3. Clarify music: playing piano/synthesizers and releasing electronic music under **Asep Bagja** / **bepitulaz** is his personal creative hobby, which fuels the product ideas behind Nanas Sound.
 4. Show both contact emails clearly:
-   - Client consulting & freelance: `asep@chloeandmatt.eu` (or link to `/work`)
+   - Client consulting & freelance: `asep@chloematt.eu` (or link to `/work`)
    - Nanas Sound & product inquiries: `asep@nanas.ee`
 
 ### 3.5 `src/components/Navbar.astro` & `src/components/Footer.astro`

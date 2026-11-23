@@ -11,7 +11,7 @@ Machine-readable version of that page: [work.md](https://www.asepbagja.com/work.
 
 ## Pages
 
-- [Work with me](https://www.asepbagja.com/work): services, past client work, engagement model, contact. Contact: asep@chloeandmatt.eu (projects are contracted and invoiced through Chloe & Matt OÜ, Estonian Commercial Register no. 14305217, Tallinn).
+- [Work with me](https://www.asepbagja.com/work): services, past client work, engagement model, contact. Contact: asep@chloematt.eu (projects are contracted and invoiced through Chloe & Matt OÜ, Estonian Commercial Register no. 14305217, Tallinn).
 - [About Asep Bagja](https://www.asepbagja.com/about): biography, 16+ years of software experience since 2010, self-taught, based in Tallinn, Estonia.
 - [English blog](https://www.asepbagja.com/blog): articles on AI engineering, software, electronics, music technology, and life in Estonia.
 - [Indonesian blog](https://www.asepbagja.com/id/blog): the same writing in Bahasa Indonesia.

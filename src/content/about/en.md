@@ -4,4 +4,4 @@ He runs two Estonian companies. At Nanas Sound OÜ ([nanas.ee](https://www.nanas
 
 Music is his personal craft. He plays piano and synthesizers and releases electronic and ambient music as Asep Bagja and bepitulaz. Many of the product ideas behind Nanas Sound start there. He began as a keyboardist in a college band in Indonesia around 2007 and played as a session keyboardist from 2007 to 2009 across alternative rock, pop, electronic pop, and jazz.
 
-Consulting and freelance work: [asep@chloeandmatt.eu](mailto:asep@chloeandmatt.eu) or [asepbagja.com/work](https://www.asepbagja.com/work). Nanas Sound and product enquiries: [asep@nanas.ee](mailto:asep@nanas.ee).
+Consulting and freelance work: [asep@chloematt.eu](mailto:asep@chloematt.eu) or [asepbagja.com/work](https://www.asepbagja.com/work). Nanas Sound and product enquiries: [asep@nanas.ee](mailto:asep@nanas.ee).
